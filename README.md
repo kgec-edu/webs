@@ -7,53 +7,111 @@
 
 ## 🌟 Why `webs`?
 
-`webs` is an institutional design system modeled after enterprise design systems (like Cape and Carbon). It provides a single source of truth for:
-- 🎨 **5 Pluggable Themes** (`theme-1` to `theme-5`) with dynamic CSS variables.
+`webs` is an institutional design system modeled after enterprise design systems. It provides a single source of truth for:
+- 🎨 **5 Pluggable Themes** (`theme-1` to `theme-5`) with dynamic CSS variables (Default: IIT Guwahati Signature `#212331` & `#FC9928`).
 - 🏛️ **IIT Guwahati-Inspired Navigation & Mega Menu** components.
-- 🛡️ **Standardized Vector Logos**:
+- 🛡️ **Standardized Vector & High-Res Logos**:
   - Official **KGEC Emblem** (SVG, PNG)
-  - **State Emblem of India (Ashoka Stambha)** (SVG)
-  - Centralized **Club & Society Logos Directory** (`assets/logos/clubs/`)
-- 🚀 **Zero-Dependency Universal Usage**: Works out of the box with **GitHub Pages**, vanilla HTML, React, Next.js, and static site generators.
+  - **State Emblem of India (Ashoka Stambha)** (PNG, SVG)
+  - Centralized **14 Official Club & Society Logos Directory** (`assets/logos/clubs/`)
+- 🚀 **Zero-Dependency Universal GitHub CDN**: Powered by **jsDelivr** and **Statically**, works immediately in **GitHub Pages**, vanilla HTML, React, Next.js, and static site generators.
 
 ---
 
-## 📦 Quick Start (Zero Config CDN)
+## ⚡ Global GitHub CDN Integration (Zero-Config)
 
-Drop this into your HTML `<head>` or GitHub Pages layout:
+You can load `webs` directly from the **GitHub CDN** via [jsDelivr](https://www.jsdelivr.com/) or [Statically](https://statically.io/):
 
+### Option A: jsDelivr GitHub CDN (Fast & Cached Globally)
 ```html
-<!-- 1. Universal Stylesheet -->
-<link rel="stylesheet" href="https://cdn.kgec.edu.in/webs/dist/webs.min.css" />
+<!-- 1. Universal webs CSS Framework -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/dist/webs.min.css" />
 
 <!-- 2. Web Components Runtime (Optional) -->
-<script type="module" src="https://cdn.kgec.edu.in/webs/dist/webs.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/dist/webs.js"></script>
+```
+
+### Option B: Statically CDN
+```html
+<link rel="stylesheet" href="https://cdn.statically.io/gh/kgec-edu/webs/main/dist/webs.min.css" />
+<script type="module" src="https://cdn.statically.io/gh/kgec-edu/webs/main/dist/webs.js"></script>
+```
+
+---
+
+## 🖼️ GitHub CDN Image Hotlinking (Logos & Clubs)
+
+You can hotlink vector SVGs and logos anywhere without self-hosting:
+
+### 1. Institutional Emblems
+```html
+<!-- KGEC Official Vector SVG Emblem -->
+<img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/institutional/kgec-logo.svg" width="64" alt="KGEC Emblem" />
+
+<!-- State Emblem of India (Ashoka Stambha) -->
+<img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/institutional/ashok-stambh.png" width="48" alt="Ashoka Stambha" />
+```
+
+### 2. 14 Official Student Club Logos
+```html
+<!-- Keygencoders Coding Club -->
+<img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/keygencoders.jpeg" width="64" alt="Keygencoders" />
+
+<!-- GDSC KGEC -->
+<img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/gdsc-kgec.png" width="64" alt="GDSC KGEC" />
+
+<!-- Robotics Society -->
+<img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/robotics-society.png" width="64" alt="Robotics Society" />
+
+<!-- E-Cell (EDC) -->
+<img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/ecell.png" width="64" alt="E-Cell" />
+
+<!-- Sportix -->
+<img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/sportix.png" width="64" alt="Sportix" />
+
+<!-- Les Quizerables -->
+<img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/les-quizerables.jpg" width="64" alt="Les Quizerables" />
+
+<!-- Litmus -->
+<img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/litmus.jpg" width="64" alt="Litmus" />
+
+<!-- Chitrank -->
+<img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/chitrank.png" width="64" alt="Chitrank" />
+
+<!-- Shutterbug -->
+<img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/shutterbug.png" width="64" alt="Shutterbug" />
+
+<!-- Riyaz -->
+<img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/riyaz.png" width="64" alt="Riyaz" />
+
+<!-- Elysium -->
+<img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/elysium.png" width="64" alt="Elysium" />
+
+<!-- Infinitio -->
+<img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/infinitio.jpeg" width="64" alt="Infinitio" />
+
+<!-- Nova -->
+<img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/nova.jpg" width="64" alt="Nova" />
+
+<!-- SAC (Students' Affairs Council) -->
+<img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/sac.png" width="64" alt="SAC" />
 ```
 
 ---
 
 ## 🧱 Web Components (Custom Elements)
 
-### 1. Reusable Logos (`<webs-logo>`)
 ```html
-<!-- KGEC Emblem -->
+<!-- Reusable Vector Logo Component -->
 <webs-logo variant="kgec" size="64"></webs-logo>
-
-<!-- Ashoka Stambha National Emblem -->
 <webs-logo variant="ashoka" size="64"></webs-logo>
+<webs-logo variant="club" name="keygencoders" size="64"></webs-logo>
+<webs-logo variant="club" name="robotics-society" size="64"></webs-logo>
 
-<!-- Student Club Logo -->
-<webs-logo variant="club" name="binary-hackathon" size="64"></webs-logo>
-<webs-logo variant="club" name="robochief-robotics" size="64"></webs-logo>
-```
-
-### 2. Standard Header & IITG Mega Menu Navbar
-```html
+<!-- IIT Guwahati MegaMenu Navbar -->
 <webs-navbar active="departments" main-domain="https://website.kgec.edu.in"></webs-navbar>
-```
 
-### 3. Standard Footer
-```html
+<!-- Standard Institutional Footer -->
 <webs-footer main-domain="https://website.kgec.edu.in"></webs-footer>
 ```
 
@@ -64,7 +122,7 @@ Drop this into your HTML `<head>` or GitHub Pages layout:
 Change the theme anytime via the HTML `data-theme` attribute:
 
 ```html
-<!-- Theme 1 (Default): Classic Navy & Amber Gold -->
+<!-- Theme 1 (Default): IIT Guwahati Slate Navy & Warm Tangerine -->
 <html data-theme="theme-1">
 
 <!-- Theme 2: Forest Emerald & Warm Gold -->
@@ -80,39 +138,9 @@ Change the theme anytime via the HTML `data-theme` attribute:
 <html data-theme="theme-5">
 ```
 
-Or switch via JavaScript:
-```javascript
-window.Webs.setTheme('theme-2');
-```
-
 ---
 
-## 📁 Repository Structure
-
-```text
-webs/
-├── assets/
-│   ├── logos/
-│   │   ├── institutional/       # KGEC, Ashoka Stambha & West Bengal Emblems
-│   │   └── clubs/               # Student Societies & Club Vector SVGs
-│   │       ├── binary-hackathon.svg
-│   │       ├── robochief-robotics.svg
-│   │       ├── les-amateurs-cultural.svg
-│   │       └── README.md        # Guide to add new club logos
-├── src/
-│   ├── css/webs.css             # Universal CSS Framework
-│   ├── components/              # Web Components (Custom Elements)
-│   ├── tokens/                  # Design Tokens Matrix (5 Themes)
-│   └── react/                   # React / Next.js Components
-├── demo/index.html              # Live Interactive Documentation & Showcase
-└── dist/                        # Production Distribution Bundle
-```
-
----
-
-## ➕ Adding a New Club Logo
-
-1. Place your vector SVG inside `assets/logos/clubs/`.
-2. Name it with lowercase kebab-case (e.g. `chitrank-photography.svg` or `gdsc-developer.svg`).
-3. Commit and push to `kgec-edu/webs`.
-4. The logo is immediately usable across all websites via `<webs-logo variant="club" name="chitrank-photography"></webs-logo>`.
+## 🌐 Live Portals
+- 📄 **GitHub Pages Site**: [https://kgec-edu.github.io/webs/](https://kgec-edu.github.io/webs/)
+- 🏛️ **Live Institutional Portal**: [https://website.kgec.edu.in](https://website.kgec.edu.in)
+- 📰 **KGEC Student Blog**: [https://blog.kgec.edu.in](https://blog.kgec.edu.in)

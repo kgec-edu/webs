@@ -120,7 +120,7 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </a>
         </li>
-        <li class="webs-nav-item"><a href="#quick-start" class="webs-nav-link">Quick Start</a></li>
+        <li class="webs-nav-item"><a href="#github-cdn" class="webs-nav-link">GitHub CDN</a></li>
         <li class="webs-nav-item"><a href="#themes" class="webs-nav-link">Themes</a></li>
         <li class="webs-nav-item"><a href="#institutional-logos" class="webs-nav-link">Institutional Emblems</a></li>
         <li class="webs-nav-item"><a href="#club-logos" class="webs-nav-link">Club Logos (14)</a></li>
@@ -143,10 +143,10 @@
           The Official Design System for All KGEC Websites &amp; Clubs
         </h2>
         <p style="font-size: 1.05rem; color: #CBD5E1; line-height: 1.6; margin-bottom: 24px;">
-          Engineered for department websites, faculty portfolios, student clubs, hackathons, and GitHub Pages with zero external dependencies.
+          Free, globally accelerated via GitHub CDN (jsDelivr &amp; Statically) for department websites, faculty portfolios, student clubs, hackathons, and GitHub Pages.
         </p>
         <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-          <a href="#quick-start" class="webs-btn webs-btn-accent">Quick Start CDN</a>
+          <a href="#github-cdn" class="webs-btn webs-btn-accent">GitHub CDN Links</a>
           <a href="#club-logos" class="webs-btn webs-btn-primary" style="background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3);">Explore 14 Club Logos</a>
         </div>
       </div>
@@ -156,10 +156,103 @@
     </div>
   </section>
 
+  <!-- GitHub CDN Integration Section -->
+  <section id="github-cdn" class="demo-section">
+    <div class="webs-container">
+      <h2 class="webs-title">1. Free GitHub CDN (jsDelivr &amp; Statically)</h2>
+      <p style="color: var(--webs-text-muted);">
+        Directly embed the design system from GitHub into any static HTML, Markdown, or GitHub Pages site with global Cloudflare edge caching:
+      </p>
+
+      <h3 style="font-size: 1.05rem; margin: 18px 0 8px;">Option A: jsDelivr GitHub CDN</h3>
+      <div class="demo-code">
+&lt;!-- 1. Universal webs CSS Framework --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/dist/webs.min.css" /&gt;
+
+&lt;!-- 2. Web Components Runtime --&gt;
+&lt;script type="module" src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/dist/webs.js"&gt;&lt;/script&gt;
+      </div>
+
+      <h3 style="font-size: 1.05rem; margin: 18px 0 8px;">Option B: Statically GitHub CDN</h3>
+      <div class="demo-code">
+&lt;link rel="stylesheet" href="https://cdn.statically.io/gh/kgec-edu/webs/main/dist/webs.min.css" /&gt;
+&lt;script type="module" src="https://cdn.statically.io/gh/kgec-edu/webs/main/dist/webs.js"&gt;&lt;/script&gt;
+      </div>
+
+      <div class="webs-grid webs-grid-3" style="margin-top: 24px;">
+        <div class="webs-card webs-card-bordered">
+          <span class="webs-badge webs-badge-primary" style="margin-bottom: 8px;">Zero Config</span>
+          <h4 style="margin-bottom: 8px;">No Node.js Required</h4>
+          <p style="font-size: 0.85rem; color: var(--webs-text-muted);">Drop two lines of HTML into any index.html and you have the complete KGEC styling and theme tokens.</p>
+        </div>
+        <div class="webs-card webs-card-accent">
+          <span class="webs-badge webs-badge-accent" style="margin-bottom: 8px;">Global Edge</span>
+          <h4 style="margin-bottom: 8px;">Automated Updates</h4>
+          <p style="font-size: 0.85rem; color: var(--webs-text-muted);">Every commit to <code>main</code> on <code>kgec-edu/webs</code> updates the CDN bundle automatically.</p>
+        </div>
+        <div class="webs-card webs-card-bordered">
+          <span class="webs-badge webs-badge-success" style="margin-bottom: 8px;">Universal</span>
+          <h4 style="margin-bottom: 8px;">GitHub Pages Native</h4>
+          <p style="font-size: 0.85rem; color: var(--webs-text-muted);">Perfect for club websites hosted on <code>*.github.io</code> with seamless HTTPS support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Themes Matrix -->
+  <section id="themes" class="demo-section" style="background: var(--webs-surface);">
+    <div class="webs-container">
+      <h2 class="webs-title">2. Pluggable Themes Matrix</h2>
+      <p style="color: var(--webs-text-muted); margin-bottom: 24px;">5 calibrated academic themes with automatic dark-contrast calculation and dynamic CSS variables:</p>
+
+      <div class="webs-grid webs-grid-3">
+        <!-- Theme 1 -->
+        <div class="webs-card webs-card-bordered">
+          <h4 style="margin-bottom: 4px;">Theme 1 (Default)</h4>
+          <div style="font-size: 0.78rem; color: var(--webs-text-muted); margin-bottom: 12px;">IIT Guwahati Slate Navy &amp; Tangerine Gold</div>
+          <div class="color-swatch" style="background: #212331; color: #FFF;">#212331 (Primary)</div>
+          <div class="color-swatch" style="background: #FC9928; color: #181924;">#FC9928 (Accent)</div>
+        </div>
+
+        <!-- Theme 2 -->
+        <div class="webs-card webs-card-bordered">
+          <h4 style="margin-bottom: 4px;">Theme 2</h4>
+          <div style="font-size: 0.78rem; color: var(--webs-text-muted); margin-bottom: 12px;">Forest Emerald &amp; Warm Gold</div>
+          <div class="color-swatch" style="background: #064E3B; color: #FFF;">#064E3B (Primary)</div>
+          <div class="color-swatch" style="background: #F59E0B; color: #022C22;">#F59E0B (Accent)</div>
+        </div>
+
+        <!-- Theme 3 -->
+        <div class="webs-card webs-card-bordered">
+          <h4 style="margin-bottom: 4px;">Theme 3</h4>
+          <div style="font-size: 0.78rem; color: var(--webs-text-muted); margin-bottom: 12px;">Oxford Royal Blue &amp; Solar Gold</div>
+          <div class="color-swatch" style="background: #1E3A8A; color: #FFF;">#1E3A8A (Primary)</div>
+          <div class="color-swatch" style="background: #EAB308; color: #172554;">#EAB308 (Accent)</div>
+        </div>
+
+        <!-- Theme 4 -->
+        <div class="webs-card webs-card-bordered">
+          <h4 style="margin-bottom: 4px;">Theme 4</h4>
+          <div style="font-size: 0.78rem; color: var(--webs-text-muted); margin-bottom: 12px;">Heritage Crimson &amp; Amber</div>
+          <div class="color-swatch" style="background: #881337; color: #FFF;">#881337 (Primary)</div>
+          <div class="color-swatch" style="background: #F59E0B; color: #4C0519;">#F59E0B (Accent)</div>
+        </div>
+
+        <!-- Theme 5 -->
+        <div class="webs-card webs-card-bordered">
+          <h4 style="margin-bottom: 4px;">Theme 5</h4>
+          <div style="font-size: 0.78rem; color: var(--webs-text-muted); margin-bottom: 12px;">Midnight Slate Minimal</div>
+          <div class="color-swatch" style="background: #0F172A; color: #FFF;">#0F172A (Primary)</div>
+          <div class="color-swatch" style="background: #EAB308; color: #020617;">#EAB308 (Accent)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Institutional Emblems Hub -->
   <section id="institutional-logos" class="demo-section">
     <div class="webs-container">
-      <h2 class="webs-title">Institutional &amp; National Emblems</h2>
+      <h2 class="webs-title">3. Institutional &amp; National Emblems</h2>
       <p style="color: var(--webs-text-muted); margin-bottom: 24px;">Official vector SVG and high-resolution PNG assets for KGEC portals and publications.</p>
 
       <div class="webs-grid webs-grid-3">
@@ -323,6 +416,28 @@
           <span class="webs-badge webs-badge-primary">Students' Affairs</span>
           <a href="./assets/logos/clubs/sac.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Components Demo -->
+  <section id="components" class="demo-section">
+    <div class="webs-container">
+      <h2 class="webs-title">4. Web Components Tags</h2>
+      <p style="color: var(--webs-text-muted);">Pre-registered custom HTML elements powered by <code>webs.js</code>:</p>
+
+      <div class="demo-code">
+&lt;!-- Reusable Vector / Image Logo Component --&gt;
+&lt;webs-logo variant="kgec" size="64"&gt;&lt;/webs-logo&gt;
+&lt;webs-logo variant="ashoka" size="64"&gt;&lt;/webs-logo&gt;
+&lt;webs-logo variant="club" name="keygencoders" size="64"&gt;&lt;/webs-logo&gt;
+&lt;webs-logo variant="club" name="robotics-society" size="64"&gt;&lt;/webs-logo&gt;
+
+&lt;!-- IIT Guwahati MegaMenu Navbar --&gt;
+&lt;webs-navbar active="departments" main-domain="https://website.kgec.edu.in"&gt;&lt;/webs-navbar&gt;
+
+&lt;!-- Standard Institutional Footer --&gt;
+&lt;webs-footer main-domain="https://website.kgec.edu.in"&gt;&lt;/webs-footer&gt;
       </div>
     </div>
   </section>
