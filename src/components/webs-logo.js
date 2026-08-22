@@ -1,10 +1,10 @@
 /**
  * <webs-logo> Web Component
- * Standard reusable vector & high-res logo component for KGEC Institutional, Ashoka Stambha, and Student Clubs.
+ * Standard reusable vector & high-res logo component for KGEC Institutional, National Emblem of India, and Student Clubs.
  *
  * Usage:
  * <webs-logo variant="kgec" size="64"></webs-logo>
- * <webs-logo variant="ashoka" size="64"></webs-logo>
+ * <webs-logo variant="indian-emblem" size="64"></webs-logo>
  * <webs-logo variant="club" name="keygencoders" size="64"></webs-logo>
  * <webs-logo variant="club" name="robotics-society" size="64"></webs-logo>
  */
@@ -33,9 +33,9 @@ class WebsLogo extends HTMLElement {
     if (variant === 'kgec') {
       src = `${basePath}/institutional/kgec-logo.svg`;
       alt = 'Kalyani Government Engineering College Official Emblem';
-    } else if (variant === 'ashoka') {
-      src = `${basePath}/institutional/ashoka-stambha.svg`;
-      alt = 'State Emblem of India (Ashoka Stambha)';
+    } else if (variant === 'indian-emblem' || variant === 'national-emblem' || variant === 'ashoka') {
+      src = `${basePath}/institutional/indian-emblem.png`;
+      alt = 'National Emblem of India (Lion Capital of Ashoka)';
     } else if (variant === 'club') {
       const clubMap = {
         'keygencoders': 'keygencoders.jpeg',
