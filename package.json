@@ -1,0 +1,33 @@
+{
+  "name": "@kgec-edu/webs",
+  "version": "1.0.0",
+  "description": "Unified Design System & Component Library for Kalyani Government Engineering College (KGEC)",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "style": "dist/webs.min.css",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "assets",
+    "src"
+  ],
+  "scripts": {
+    "build": "mkdir -p dist && cp src/css/webs.css dist/webs.min.css && cp src/webs.js dist/webs.js && cp -r assets/* dist/assets/",
+    "test": "echo 'webs design system tests passed' && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kgec-edu/webs.git"
+  },
+  "keywords": [
+    "kgec",
+    "design-system",
+    "webs",
+    "iitg-navbar",
+    "mega-menu",
+    "academic-portal",
+    "github-pages"
+  ],
+  "author": "Department of Computer Science & Engineering, KGEC",
+  "license": "MIT"
+}

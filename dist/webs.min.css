@@ -1,0 +1,495 @@
+/*!
+ * webs Design System v1.0.0
+ * Unified Design System for Kalyani Government Engineering College (KGEC)
+ * Open Source & Hosted on kgec-edu git
+ * Compatible with GitHub Pages, HTML, React, Vue, Next.js
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ==========================================================================
+   1. CSS Variables & 5 Pluggable Themes
+   ========================================================================== */
+:root, [data-theme="theme-1"] {
+  --webs-primary: #0A3161;
+  --webs-primary-deep: #062244;
+  --webs-primary-soft: #10437F;
+  --webs-secondary: #881337;
+  --webs-accent: #F2A900;
+  --webs-accent-hover: #D97706;
+  --webs-accent-light: #FEF3C7;
+  --webs-bg: #F4F6F9;
+  --webs-surface: #FFFFFF;
+  --webs-text-main: #23303E;
+  --webs-text-muted: #5E6B7A;
+  --webs-border: #DDE3EA;
+  --webs-font-heading: 'Outfit', 'Roboto Slab', Georgia, serif;
+  --webs-font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --webs-font-mono: 'JetBrains Mono', monospace;
+  --webs-radius-sm: 4px;
+  --webs-radius-md: 8px;
+  --webs-radius-lg: 12px;
+  --webs-shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --webs-shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --webs-shadow-lg: 0 18px 40px rgba(0,0,0,0.18);
+}
+
+[data-theme="theme-2"] {
+  --webs-primary: #064E3B;
+  --webs-primary-deep: #022C22;
+  --webs-primary-soft: #047857;
+  --webs-secondary: #1E3A8A;
+  --webs-accent: #F59E0B;
+  --webs-accent-hover: #D97706;
+  --webs-accent-light: #FEF3C7;
+  --webs-bg: #F0FDF4;
+  --webs-surface: #FFFFFF;
+  --webs-text-main: #1E293B;
+  --webs-text-muted: #64748B;
+  --webs-border: #CBD5E1;
+}
+
+[data-theme="theme-3"] {
+  --webs-primary: #1E3A8A;
+  --webs-primary-deep: #172554;
+  --webs-primary-soft: #2563EB;
+  --webs-secondary: #991B1B;
+  --webs-accent: #EAB308;
+  --webs-accent-hover: #CA8A04;
+  --webs-accent-light: #FEF9C3;
+  --webs-bg: #F8FAFC;
+  --webs-surface: #FFFFFF;
+  --webs-text-main: #0F172A;
+  --webs-text-muted: #475569;
+  --webs-border: #E2E8F0;
+}
+
+[data-theme="theme-4"] {
+  --webs-primary: #881337;
+  --webs-primary-deep: #4C0519;
+  --webs-primary-soft: #9F1239;
+  --webs-secondary: #0A3161;
+  --webs-accent: #F59E0B;
+  --webs-accent-hover: #D97706;
+  --webs-accent-light: #FEF3C7;
+  --webs-bg: #FFFBEB;
+  --webs-surface: #FFFFFF;
+  --webs-text-main: #1C1917;
+  --webs-text-muted: #78716C;
+  --webs-border: #E7E5E4;
+}
+
+[data-theme="theme-5"] {
+  --webs-primary: #0F172A;
+  --webs-primary-deep: #020617;
+  --webs-primary-soft: #1E293B;
+  --webs-secondary: #0369A1;
+  --webs-accent: #EAB308;
+  --webs-accent-hover: #CA8A04;
+  --webs-accent-light: #FEF9C3;
+  --webs-bg: #F8FAFC;
+  --webs-surface: #FFFFFF;
+  --webs-text-main: #0F172A;
+  --webs-text-muted: #64748B;
+  --webs-border: #CBD5E1;
+}
+
+/* ==========================================================================
+   2. Base & Typography
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.webs-body, body {
+  font-family: var(--webs-font-body);
+  background-color: var(--webs-bg);
+  color: var(--webs-text-main);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.webs-h1, .webs-h2, .webs-h3, .webs-h4, .webs-h5, .webs-h6,
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--webs-font-heading);
+  color: var(--webs-primary-deep);
+  font-weight: 700;
+  margin-top: 0;
+}
+
+.webs-title {
+  position: relative;
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.webs-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--webs-accent);
+  border-radius: 2px;
+}
+
+.webs-title-center {
+  text-align: center;
+}
+
+.webs-title-center::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ==========================================================================
+   3. Layout Grid & Containers
+   ========================================================================== */
+.webs-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.webs-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.webs-grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.webs-grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.webs-grid-4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+/* ==========================================================================
+   4. Buttons
+   ========================================================================== */
+.webs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: var(--webs-radius-sm);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  border: 1px solid transparent;
+}
+
+.webs-btn-primary {
+  background-color: var(--webs-primary);
+  color: #FFFFFF;
+  border-color: var(--webs-primary);
+}
+
+.webs-btn-primary:hover {
+  background-color: var(--webs-primary-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(10, 49, 97, 0.25);
+  color: #FFFFFF;
+}
+
+.webs-btn-accent {
+  background-color: var(--webs-accent);
+  color: #062244;
+  border-color: var(--webs-accent);
+  font-weight: 800;
+}
+
+.webs-btn-accent:hover {
+  background-color: var(--webs-accent-hover);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.webs-btn-outline {
+  background-color: transparent;
+  color: var(--webs-primary);
+  border-color: var(--webs-primary);
+}
+
+.webs-btn-outline:hover {
+  background-color: var(--webs-primary);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   5. Cards & Panels
+   ========================================================================== */
+.webs-card {
+  background-color: var(--webs-surface);
+  border: 1px solid var(--webs-border);
+  border-radius: var(--webs-radius-md);
+  padding: 24px;
+  box-shadow: var(--webs-shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.webs-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--webs-shadow-md);
+}
+
+.webs-card-bordered {
+  border-top: 3px solid var(--webs-primary);
+}
+
+.webs-card-accent {
+  border-top: 3px solid var(--webs-accent);
+}
+
+/* ==========================================================================
+   6. Badges & Tags
+   ========================================================================== */
+.webs-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: var(--webs-radius-sm);
+  letter-spacing: 0.04em;
+}
+
+.webs-badge-primary { background-color: var(--webs-primary); color: #FFFFFF; }
+.webs-badge-accent { background-color: var(--webs-accent-light); color: #B45309; }
+.webs-badge-success { background-color: #DCFCE7; color: #15803D; }
+.webs-badge-danger { background-color: #FEE2E2; color: #B91C1C; }
+
+/* ==========================================================================
+   7. Top Utility Bar
+   ========================================================================== */
+.webs-topbar {
+  background-color: var(--webs-primary-deep);
+  color: #E2E8F0;
+  font-size: 0.78rem;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.webs-topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.webs-topbar-link {
+  color: #CBD5E1;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.webs-topbar-link:hover {
+  color: var(--webs-accent);
+}
+
+/* ==========================================================================
+   8. Institutional Header & Logo
+   ========================================================================== */
+.webs-header {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid var(--webs-border);
+  padding: 12px 0;
+}
+
+.webs-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.webs-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.webs-logo-img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.webs-ashoka-img {
+  width: 48px;
+  height: 64px;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   9. IIT Guwahati-Inspired Mega Menu Navigation
+   ========================================================================== */
+.webs-nav {
+  background-color: var(--webs-primary);
+  border-bottom: 3px solid var(--webs-accent);
+  box-shadow: var(--webs-shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.webs-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  white-space: nowrap;
+}
+
+.webs-nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.webs-nav-item {
+  position: relative;
+}
+
+.webs-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 11px 12px;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 0.84rem;
+  font-weight: 600;
+  transition: background-color 0.15s ease;
+}
+
+.webs-nav-link:hover, .webs-nav-item:hover > .webs-nav-link {
+  background-color: var(--webs-primary-deep);
+  color: #FFFFFF;
+}
+
+.webs-megamenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #FFFFFF;
+  border-top: 3px solid var(--webs-accent);
+  box-shadow: var(--webs-shadow-lg);
+  border-radius: 0 0 var(--webs-radius-md) var(--webs-radius-md);
+  padding: 20px;
+  z-index: 1000;
+  width: 500px;
+}
+
+.webs-nav-item:hover > .webs-megamenu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.webs-megamenu-title {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--webs-primary);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--webs-border);
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+
+.webs-megamenu-link {
+  display: block;
+  padding: 4px 0;
+  color: var(--webs-text-main);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.webs-megamenu-link:hover {
+  color: var(--webs-accent-hover);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   10. Institutional Footer
+   ========================================================================== */
+.webs-footer {
+  background-color: var(--webs-primary-deep);
+  color: #E2E8F0;
+  border-top: 4px solid var(--webs-accent);
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.webs-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 36px;
+  margin-bottom: 40px;
+}
+
+.webs-footer-col h4, .webs-footer-col h3 {
+  color: #FFFFFF;
+  font-size: 1rem;
+  margin-bottom: 14px;
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.webs-footer-col h4::after, .webs-footer-col h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 36px;
+  height: 2px;
+  background-color: var(--webs-accent);
+}
+
+.webs-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+
+.webs-footer-links a {
+  color: #CBD5E1;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.webs-footer-links a:hover {
+  color: var(--webs-accent);
+}
+
+.webs-footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.78rem;
+  color: #94A3B8;
+}
