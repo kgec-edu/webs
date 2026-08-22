@@ -11,16 +11,16 @@
    1. CSS Variables & 5 Pluggable Themes
    ========================================================================== */
 :root, [data-theme="theme-1"] {
-  --webs-primary: #0A3161;
-  --webs-primary-deep: #062244;
-  --webs-primary-soft: #10437F;
+  --webs-primary: #212331;
+  --webs-primary-deep: #181924;
+  --webs-primary-soft: #2D3042;
   --webs-secondary: #881337;
-  --webs-accent: #F2A900;
-  --webs-accent-hover: #D97706;
-  --webs-accent-light: #FEF3C7;
-  --webs-bg: #F4F6F9;
+  --webs-accent: #FC9928;
+  --webs-accent-hover: #E68212;
+  --webs-accent-light: #FFF3E0;
+  --webs-bg: #F8F9FA;
   --webs-surface: #FFFFFF;
-  --webs-text-main: #23303E;
+  --webs-text-main: #1E293B;
   --webs-text-muted: #5E6B7A;
   --webs-border: #DDE3EA;
   --webs-font-heading: 'Outfit', 'Roboto Slab', Georgia, serif;
