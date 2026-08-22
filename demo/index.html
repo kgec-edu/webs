@@ -4,33 +4,65 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>webs Design System — Kalyani Government Engineering College</title>
-  <link rel="stylesheet" href="../src/css/webs.css" />
+  <link rel="icon" type="image/svg+xml" href="./assets/logos/institutional/kgec-logo.svg" />
+  <link rel="stylesheet" href="./dist/webs.min.css" />
   <style>
+    :root {
+      --webs-primary: #212331;
+      --webs-primary-deep: #181924;
+      --webs-primary-soft: #2D3042;
+      --webs-accent: #FC9928;
+      --webs-accent-hover: #E68212;
+      --webs-accent-light: #FFF3E0;
+      --webs-bg: #F8F9FA;
+      --webs-surface: #FFFFFF;
+      --webs-text-main: #1E293B;
+      --webs-text-muted: #5E6B7A;
+      --webs-border: #DDE3EA;
+    }
     .demo-section {
-      padding: 50px 0;
+      padding: 60px 0;
       border-bottom: 1px solid var(--webs-border);
     }
     .demo-code {
-      background: #0F172A;
+      background: #181924;
       color: #E2E8F0;
-      padding: 16px;
+      padding: 16px 20px;
       border-radius: 8px;
-      font-family: var(--webs-font-mono);
+      font-family: var(--webs-font-mono, monospace);
       font-size: 0.85rem;
       overflow-x: auto;
       margin: 16px 0;
+      border: 1px solid rgba(255,255,255,0.1);
     }
     .logo-card {
       background: var(--webs-surface);
       border: 1px solid var(--webs-border);
-      border-radius: 8px;
-      padding: 24px;
+      border-radius: 10px;
+      padding: 20px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       gap: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .logo-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    }
+    .color-swatch {
+      height: 70px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-end;
+      padding: 6px 8px;
+      font-family: var(--webs-font-mono, monospace);
+      font-size: 0.75rem;
+      font-weight: 700;
     }
   </style>
 </head>
@@ -41,17 +73,23 @@
     <div class="webs-container webs-topbar-inner">
       <div>
         <span>Institutional Design System: <strong>webs v1.0.0</strong></span>
+        <span style="margin: 0 8px; opacity: 0.5;">|</span>
+        <span>Maintained by Department of CSE</span>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
-        <label style="font-size: 0.78rem;">Theme: </label>
-        <select id="themeSelector" style="background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; padding: 2px 6px; font-size: 0.78rem;">
-          <option value="theme-1">Theme 1 (Default Navy & Gold)</option>
-          <option value="theme-2">Theme 2 (Forest Emerald)</option>
-          <option value="theme-3">Theme 3 (Oxford Royal Blue)</option>
-          <option value="theme-4">Theme 4 (Heritage Crimson)</option>
-          <option value="theme-5">Theme 5 (Midnight Slate)</option>
+        <label for="themeSelector" style="font-size: 0.78rem; font-weight: 600;">Theme: </label>
+        <select id="themeSelector" style="background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; padding: 3px 8px; font-size: 0.78rem; cursor: pointer;">
+          <option value="theme-1">Theme 1 (IITG Slate Navy &amp; Warm Tangerine)</option>
+          <option value="theme-2">Theme 2 (Forest Emerald &amp; Warm Gold)</option>
+          <option value="theme-3">Theme 3 (Oxford Royal Blue &amp; Solar Gold)</option>
+          <option value="theme-4">Theme 4 (Heritage Crimson &amp; Amber)</option>
+          <option value="theme-5">Theme 5 (Midnight Slate Minimal)</option>
         </select>
-        <a href="https://github.com/kgec-edu/webs" class="webs-topbar-link">kgec-edu Git</a>
+        <a href="https://github.com/kgec-edu/webs" target="_blank" class="webs-topbar-link" style="display: flex; align-items: center; gap: 4px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://website.kgec.edu.in" target="_blank" class="webs-topbar-link">Main Portal</a>
       </div>
     </div>
   </div>
@@ -60,156 +98,260 @@
   <header class="webs-header">
     <div class="webs-container webs-header-inner">
       <div class="webs-brand">
-        <img src="../assets/logos/institutional/kgec-logo.svg" alt="KGEC Logo" class="webs-logo-img" />
+        <img src="./assets/logos/institutional/kgec-logo.svg" alt="KGEC Logo" class="webs-logo-img" />
         <div>
           <div style="font-size: 0.85rem; font-weight: 600; color: var(--webs-secondary);">কল্যাণী গভর্নমেন্ট ইঞ্জিনিয়ারিং কলেজ</div>
           <h1 style="font-size: 1.4rem; margin: 0; color: var(--webs-primary-deep);">webs Design System</h1>
-          <div style="font-size: 0.78rem; color: var(--webs-text-muted);">Unified Design System &amp; Component Hub for KGEC &amp; GitHub Pages</div>
+          <div style="font-size: 0.78rem; color: var(--webs-text-muted);">Unified Design System, Emblems &amp; Club Assets Hub for KGEC</div>
         </div>
       </div>
-      <div>
-        <img src="../assets/logos/institutional/ashoka-stambha.svg" alt="Ashoka Stambha Emblem" class="webs-ashoka-img" />
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <img src="./assets/logos/institutional/ashok-stambh.png" alt="Ashoka Stambha State Emblem" class="webs-ashoka-img" />
       </div>
     </div>
   </header>
 
-  <!-- Mega Menu Navigation (Web Component) -->
-  <webs-navbar main-domain="https://website.kgec.edu.in"></webs-navbar>
+  <!-- Mega Menu Navigation Component -->
+  <nav class="webs-nav">
+    <div class="webs-container webs-nav-inner">
+      <ul class="webs-nav-list">
+        <li class="webs-nav-item">
+          <a href="#overview" class="webs-nav-link" style="background-color: var(--webs-primary-deep);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </a>
+        </li>
+        <li class="webs-nav-item"><a href="#quick-start" class="webs-nav-link">Quick Start</a></li>
+        <li class="webs-nav-item"><a href="#themes" class="webs-nav-link">Themes</a></li>
+        <li class="webs-nav-item"><a href="#institutional-logos" class="webs-nav-link">Institutional Emblems</a></li>
+        <li class="webs-nav-item"><a href="#club-logos" class="webs-nav-link">Club Logos (14)</a></li>
+        <li class="webs-nav-item"><a href="#components" class="webs-nav-link">Components</a></li>
+      </ul>
+      <div>
+        <a href="https://github.com/kgec-edu/webs" target="_blank" class="webs-btn webs-btn-accent" style="padding: 6px 14px; font-size: 0.78rem;">
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
 
   <!-- Hero Section -->
-  <section style="background: linear-gradient(135deg, var(--webs-primary-deep) 0%, var(--webs-primary) 100%); color: #FFFFFF; padding: 60px 0; border-bottom: 4px solid var(--webs-accent);">
+  <section id="overview" style="background: linear-gradient(135deg, var(--webs-primary-deep) 0%, var(--webs-primary) 100%); color: #FFFFFF; padding: 70px 0; border-bottom: 4px solid var(--webs-accent);">
     <div class="webs-container" style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center;">
       <div>
-        <span class="webs-badge webs-badge-accent" style="margin-bottom: 12px;">KGEC Open Ecosystem</span>
-        <h2 style="color: #FFFFFF; font-size: 2.4rem; font-weight: 800; line-height: 1.2; margin-bottom: 16px;">
-          The Official Design System for All KGEC Websites
+        <span class="webs-badge webs-badge-accent" style="margin-bottom: 14px;">Open Source • kgec-edu</span>
+        <h2 style="color: #FFFFFF; font-size: 2.5rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px;">
+          The Official Design System for All KGEC Websites &amp; Clubs
         </h2>
         <p style="font-size: 1.05rem; color: #CBD5E1; line-height: 1.6; margin-bottom: 24px;">
-          A lightweight, zero-dependency design system with 5 pluggable themes, vector logos (KGEC &amp; Ashoka Stambha), student club assets, and ready-to-use Web Components.
+          Engineered for department websites, faculty portfolios, student clubs, hackathons, and GitHub Pages with zero external dependencies.
         </p>
         <div style="display: flex; gap: 12px; flex-wrap: wrap;">
           <a href="#quick-start" class="webs-btn webs-btn-accent">Quick Start CDN</a>
-          <a href="#logos-hub" class="webs-btn webs-btn-primary" style="background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3);">Explore Logos Hub</a>
+          <a href="#club-logos" class="webs-btn webs-btn-primary" style="background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3);">Explore 14 Club Logos</a>
         </div>
       </div>
       <div style="text-align: center;">
-        <img src="../assets/logos/institutional/kgec-logo.svg" alt="KGEC" style="width: 180px; height: 180px; filter: drop-shadow(0 10px 25px rgba(0,0,0,0.3));" />
+        <img src="./assets/logos/institutional/kgec-logo.svg" alt="KGEC Emblem" style="width: 200px; height: 200px; filter: drop-shadow(0 12px 28px rgba(0,0,0,0.35));" />
       </div>
     </div>
   </section>
 
-  <!-- Quick Start CDN -->
-  <section id="quick-start" class="demo-section">
+  <!-- Institutional Emblems Hub -->
+  <section id="institutional-logos" class="demo-section">
     <div class="webs-container">
-      <h2 class="webs-title">Quick Start: Use in ANY Website or GitHub Pages</h2>
-      <p style="color: var(--webs-text-muted);">Drop these two lines into the <code>&lt;head&gt;</code> of any HTML file or GitHub Pages template:</p>
-      
-      <div class="demo-code">
-&lt;!-- 1. Include webs CSS Framework --&gt;
-&lt;link rel="stylesheet" href="https://cdn.kgec.edu.in/webs/dist/webs.min.css" /&gt;
-
-&lt;!-- 2. Include webs Custom Elements Runtime (Optional) --&gt;
-&lt;script type="module" src="https://cdn.kgec.edu.in/webs/dist/webs.js"&gt;&lt;/script&gt;
-      </div>
-
-      <div class="webs-grid webs-grid-3" style="margin-top: 30px;">
-        <div class="webs-card webs-card-bordered">
-          <span class="webs-badge webs-badge-primary" style="margin-bottom: 8px;">Zero Dependencies</span>
-          <h4 style="margin-bottom: 8px;">Vanilla HTML &amp; CSS</h4>
-          <p style="font-size: 0.85rem; color: var(--webs-text-muted);">Pure CSS classes like <code>.webs-btn</code>, <code>.webs-card</code>, <code>.webs-navbar</code> work everywhere.</p>
-        </div>
-        <div class="webs-card webs-card-accent">
-          <span class="webs-badge webs-badge-accent" style="margin-bottom: 8px;">Custom Elements</span>
-          <h4 style="margin-bottom: 8px;">Web Components</h4>
-          <p style="font-size: 0.85rem; color: var(--webs-text-muted);">Use <code>&lt;webs-navbar&gt;</code>, <code>&lt;webs-logo&gt;</code>, and <code>&lt;webs-footer&gt;</code> anywhere.</p>
-        </div>
-        <div class="webs-card webs-card-bordered">
-          <span class="webs-badge webs-badge-success" style="margin-bottom: 8px;">Modern Stack</span>
-          <h4 style="margin-bottom: 8px;">React &amp; Next.js</h4>
-          <p style="font-size: 0.85rem; color: var(--webs-text-muted);">Native TypeScript React components with <code>WebsProvider</code> context.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Official Logos Hub -->
-  <section id="logos-hub" class="demo-section" style="background: var(--webs-surface);">
-    <div class="webs-container">
-      <h2 class="webs-title">Official Institutional &amp; National Logos</h2>
-      <p style="color: var(--webs-text-muted); margin-bottom: 24px;">High-resolution vector assets standardized for KGEC web portals and publications.</p>
+      <h2 class="webs-title">Institutional &amp; National Emblems</h2>
+      <p style="color: var(--webs-text-muted); margin-bottom: 24px;">Official vector SVG and high-resolution PNG assets for KGEC portals and publications.</p>
 
       <div class="webs-grid webs-grid-3">
         <!-- KGEC Emblem -->
         <div class="logo-card">
-          <img src="../assets/logos/institutional/kgec-logo.svg" width="96" height="96" alt="KGEC Logo" />
+          <img src="./assets/logos/institutional/kgec-logo.svg" width="96" height="96" alt="KGEC Logo" style="object-fit: contain;" />
           <h4 style="margin: 0;">KGEC Official Emblem</h4>
           <span class="webs-badge webs-badge-primary">Vector SVG &amp; PNG</span>
           <div style="display: flex; gap: 8px;">
-            <a href="../assets/logos/institutional/kgec-logo.svg" download class="webs-btn webs-btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">Download SVG</a>
-            <a href="../assets/logos/institutional/kgec-logo.png" download class="webs-btn webs-btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">PNG</a>
+            <a href="./assets/logos/institutional/kgec-logo.svg" download class="webs-btn webs-btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">Download SVG</a>
+            <a href="./assets/logos/institutional/kgec-logo.png" download class="webs-btn webs-btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">PNG</a>
           </div>
         </div>
 
         <!-- Ashoka Stambha -->
         <div class="logo-card">
-          <img src="../assets/logos/institutional/ashoka-stambha.svg" width="80" height="96" alt="Ashoka Stambha" />
+          <img src="./assets/logos/institutional/ashok-stambh.png" width="80" height="96" alt="Ashoka Stambha" style="object-fit: contain;" />
           <h4 style="margin: 0;">State Emblem of India</h4>
-          <span class="webs-badge webs-badge-accent">Ashoka Stambha Vector</span>
+          <span class="webs-badge webs-badge-accent">Ashoka Stambha (National)</span>
           <div style="display: flex; gap: 8px;">
-            <a href="../assets/logos/institutional/ashoka-stambha.svg" download class="webs-btn webs-btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">Download SVG</a>
+            <a href="./assets/logos/institutional/ashok-stambh.png" download class="webs-btn webs-btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">Download PNG</a>
+            <a href="./assets/logos/institutional/ashoka-stambha.svg" download class="webs-btn webs-btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">SVG</a>
           </div>
         </div>
 
-        <!-- Binary Hackathon -->
+        <!-- KGEC Transparent -->
         <div class="logo-card">
-          <img src="../assets/logos/clubs/binary-hackathon.svg" width="96" height="96" alt="BINARY" />
-          <h4 style="margin: 0;">BINARY Hackathon (CSE)</h4>
-          <span class="webs-badge webs-badge-success">Club Asset</span>
+          <img src="./assets/logos/institutional/kgec-logo.png" width="96" height="96" alt="KGEC Emblem" style="object-fit: contain;" />
+          <h4 style="margin: 0;">KGEC Crest (Transparent)</h4>
+          <span class="webs-badge webs-badge-success">High-Res PNG</span>
           <div style="display: flex; gap: 8px;">
-            <a href="../assets/logos/clubs/binary-hackathon.svg" download class="webs-btn webs-btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">Download SVG</a>
+            <a href="./assets/logos/institutional/kgec-logo.png" download class="webs-btn webs-btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">Download PNG</a>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Robochief -->
+  <!-- 14 Official Student Club Logos Hub -->
+  <section id="club-logos" class="demo-section" style="background: var(--webs-surface);">
+    <div class="webs-container">
+      <div style="display: flex; justify-content: space-between; alignItems: flex-end; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;">
+        <div>
+          <h2 class="webs-title" style="margin-bottom: 4px;">Student Societies &amp; Club Logos (14)</h2>
+          <p style="color: var(--webs-text-muted); margin: 0;">All 14 active student club logos preserved in high fidelity for web and print use.</p>
+        </div>
+        <a href="https://github.com/kgec-edu/webs/tree/main/assets/logos/clubs" target="_blank" class="webs-btn webs-btn-primary" style="padding: 6px 14px; font-size: 0.8rem;">
+          View on GitHub Repo &rarr;
+        </a>
+      </div>
+
+      <div class="webs-grid webs-grid-4">
+        <!-- 1. Keygencoders -->
         <div class="logo-card">
-          <img src="../assets/logos/clubs/robochief-robotics.svg" width="96" height="96" alt="Robochief" />
-          <h4 style="margin: 0;">Robochief Robotics</h4>
-          <span class="webs-badge webs-badge-primary">Robotics Society</span>
-          <div style="display: flex; gap: 8px;">
-            <a href="../assets/logos/clubs/robochief-robotics.svg" download class="webs-btn webs-btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">Download SVG</a>
-          </div>
+          <img src="./assets/logos/clubs/keygencoders.jpeg" width="80" height="80" alt="Keygencoders" style="object-fit: contain; border-radius: 8px;" />
+          <h4 style="margin: 0; font-size: 0.95rem;">Keygencoders</h4>
+          <span class="webs-badge webs-badge-primary">Coding &amp; Algorithms</span>
+          <a href="./assets/logos/clubs/keygencoders.jpeg" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
         </div>
 
-        <!-- Les Amateurs -->
+        <!-- 2. GDSC KGEC -->
         <div class="logo-card">
-          <img src="../assets/logos/clubs/les-amateurs-cultural.svg" width="96" height="96" alt="Les Amateurs" />
-          <h4 style="margin: 0;">Les Amateurs</h4>
-          <span class="webs-badge webs-badge-accent">Cultural Society</span>
-          <div style="display: flex; gap: 8px;">
-            <a href="../assets/logos/clubs/les-amateurs-cultural.svg" download class="webs-btn webs-btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">Download SVG</a>
-          </div>
+          <img src="./assets/logos/clubs/gdsc-kgec.png" width="80" height="80" alt="GDSC KGEC" style="object-fit: contain;" />
+          <h4 style="margin: 0; font-size: 0.95rem;">GDSC KGEC</h4>
+          <span class="webs-badge webs-badge-accent">Google Developers</span>
+          <a href="./assets/logos/clubs/gdsc-kgec.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
         </div>
 
-        <!-- Add Your Club -->
-        <div class="logo-card" style="border: 2px dashed var(--webs-border);">
-          <div style="font-size: 2.5rem; color: var(--webs-primary);">➕</div>
-          <h4 style="margin: 0;">Add Your Club Logo</h4>
-          <p style="font-size: 0.8rem; color: var(--webs-text-muted); margin: 0;">Drop vector SVG into <code>assets/logos/clubs/</code></p>
-          <a href="https://github.com/kgec-edu/webs/tree/main/assets/logos/clubs" class="webs-btn webs-btn-primary" style="padding: 4px 10px; font-size: 0.75rem;">View Instructions</a>
+        <!-- 3. Robotics Society -->
+        <div class="logo-card">
+          <img src="./assets/logos/clubs/robotics-society.png" width="80" height="80" alt="Robotics Society" style="object-fit: contain;" />
+          <h4 style="margin: 0; font-size: 0.95rem;">Robotics Society</h4>
+          <span class="webs-badge webs-badge-danger">Robotics &amp; IoT</span>
+          <a href="./assets/logos/clubs/robotics-society.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
+        </div>
+
+        <!-- 4. E-Cell -->
+        <div class="logo-card">
+          <img src="./assets/logos/clubs/ecell.png" width="80" height="80" alt="E-Cell" style="object-fit: contain;" />
+          <h4 style="margin: 0; font-size: 0.95rem;">E-Cell (EDC)</h4>
+          <span class="webs-badge webs-badge-success">Entrepreneurship</span>
+          <a href="./assets/logos/clubs/ecell.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
+        </div>
+
+        <!-- 5. Sportix -->
+        <div class="logo-card">
+          <img src="./assets/logos/clubs/sportix.png" width="80" height="80" alt="Sportix" style="object-fit: contain;" />
+          <h4 style="margin: 0; font-size: 0.95rem;">Sportix</h4>
+          <span class="webs-badge webs-badge-primary">Sports &amp; Athletics</span>
+          <a href="./assets/logos/clubs/sportix.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
+        </div>
+
+        <!-- 6. Les Quizerables -->
+        <div class="logo-card">
+          <img src="./assets/logos/clubs/les-quizerables.jpg" width="80" height="80" alt="Les Quizerables" style="object-fit: contain; border-radius: 8px;" />
+          <h4 style="margin: 0; font-size: 0.95rem;">Les Quizerables</h4>
+          <span class="webs-badge webs-badge-accent">Quiz Society</span>
+          <a href="./assets/logos/clubs/les-quizerables.jpg" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
+        </div>
+
+        <!-- 7. Litmus -->
+        <div class="logo-card">
+          <img src="./assets/logos/clubs/litmus.jpg" width="80" height="80" alt="Litmus" style="object-fit: contain; border-radius: 8px;" />
+          <h4 style="margin: 0; font-size: 0.95rem;">Litmus</h4>
+          <span class="webs-badge webs-badge-primary">Literary &amp; Debate</span>
+          <a href="./assets/logos/clubs/litmus.jpg" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
+        </div>
+
+        <!-- 8. Chitrank -->
+        <div class="logo-card">
+          <img src="./assets/logos/clubs/chitrank.png" width="80" height="80" alt="Chitrank" style="object-fit: contain;" />
+          <h4 style="margin: 0; font-size: 0.95rem;">Chitrank</h4>
+          <span class="webs-badge webs-badge-accent">Fine Arts &amp; Painting</span>
+          <a href="./assets/logos/clubs/chitrank.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
+        </div>
+
+        <!-- 9. Shutterbug -->
+        <div class="logo-card">
+          <img src="./assets/logos/clubs/shutterbug.png" width="80" height="80" alt="Shutterbug" style="object-fit: contain;" />
+          <h4 style="margin: 0; font-size: 0.95rem;">Shutterbug</h4>
+          <span class="webs-badge webs-badge-success">Photography &amp; Film</span>
+          <a href="./assets/logos/clubs/shutterbug.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
+        </div>
+
+        <!-- 10. Riyaz -->
+        <div class="logo-card">
+          <img src="./assets/logos/clubs/riyaz.png" width="80" height="80" alt="Riyaz" style="object-fit: contain;" />
+          <h4 style="margin: 0; font-size: 0.95rem;">Riyaz</h4>
+          <span class="webs-badge webs-badge-danger">Music &amp; Vocals</span>
+          <a href="./assets/logos/clubs/riyaz.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
+        </div>
+
+        <!-- 11. Elysium -->
+        <div class="logo-card">
+          <img src="./assets/logos/clubs/elysium.png" width="80" height="80" alt="Elysium" style="object-fit: contain;" />
+          <h4 style="margin: 0; font-size: 0.95rem;">Elysium</h4>
+          <span class="webs-badge webs-badge-primary">Dance Society</span>
+          <a href="./assets/logos/clubs/elysium.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
+        </div>
+
+        <!-- 12. Infinitio -->
+        <div class="logo-card">
+          <img src="./assets/logos/clubs/infinitio.jpeg" width="80" height="80" alt="Infinitio" style="object-fit: contain; border-radius: 8px;" />
+          <h4 style="margin: 0; font-size: 0.95rem;">Infinitio</h4>
+          <span class="webs-badge webs-badge-accent">Astronomy &amp; Science</span>
+          <a href="./assets/logos/clubs/infinitio.jpeg" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
+        </div>
+
+        <!-- 13. Nova -->
+        <div class="logo-card">
+          <img src="./assets/logos/clubs/nova.jpg" width="80" height="80" alt="Nova" style="object-fit: contain; border-radius: 8px;" />
+          <h4 style="margin: 0; font-size: 0.95rem;">Nova</h4>
+          <span class="webs-badge webs-badge-danger">Fashion &amp; Lifestyle</span>
+          <a href="./assets/logos/clubs/nova.jpg" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
+        </div>
+
+        <!-- 14. SAC -->
+        <div class="logo-card">
+          <img src="./assets/logos/clubs/sac.png" width="80" height="80" alt="SAC" style="object-fit: contain;" />
+          <h4 style="margin: 0; font-size: 0.95rem;">SAC</h4>
+          <span class="webs-badge webs-badge-primary">Students' Affairs</span>
+          <a href="./assets/logos/clubs/sac.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Footer Component -->
-  <webs-footer main-domain="https://website.kgec.edu.in"></webs-footer>
+  <footer class="webs-footer">
+    <div class="webs-container">
+      <div class="webs-footer-bottom">
+        <div>
+          &copy; 2026 Kalyani Government Engineering College. All rights reserved.
+        </div>
+        <div style="color: #CBD5E1;">
+          Website maintained by Department of Computer Science &amp; Engineering
+        </div>
+      </div>
+    </div>
+  </footer>
 
-  <!-- Runtime JavaScript -->
-  <script type="module" src="../src/webs.js"></script>
+  <!-- Runtime Theme Switcher Script -->
   <script>
     document.getElementById('themeSelector').addEventListener('change', function(e) {
       document.documentElement.setAttribute('data-theme', e.target.value);
+      localStorage.setItem('webs_theme', e.target.value);
     });
+    const savedTheme = localStorage.getItem('webs_theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.getElementById('themeSelector').value = savedTheme;
+    }
   </script>
 </body>
 </html>

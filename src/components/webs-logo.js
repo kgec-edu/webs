@@ -1,11 +1,12 @@
 /**
  * <webs-logo> Web Component
- * Standard reusable vector logo component for KGEC Institutional, Ashoka Stambha, and Student Clubs.
+ * Standard reusable vector & high-res logo component for KGEC Institutional, Ashoka Stambha, and Student Clubs.
  *
  * Usage:
  * <webs-logo variant="kgec" size="64"></webs-logo>
  * <webs-logo variant="ashoka" size="64"></webs-logo>
- * <webs-logo variant="club" name="binary-hackathon" size="64"></webs-logo>
+ * <webs-logo variant="club" name="keygencoders" size="64"></webs-logo>
+ * <webs-logo variant="club" name="robotics-society" size="64"></webs-logo>
  */
 class WebsLogo extends HTMLElement {
   static get observedAttributes() {
@@ -36,7 +37,30 @@ class WebsLogo extends HTMLElement {
       src = `${basePath}/institutional/ashoka-stambha.svg`;
       alt = 'State Emblem of India (Ashoka Stambha)';
     } else if (variant === 'club') {
-      src = `${basePath}/clubs/${name || 'binary-hackathon'}.svg`;
+      const clubMap = {
+        'keygencoders': 'keygencoders.jpeg',
+        'gdsc': 'gdsc-kgec.png',
+        'gdsc-kgec': 'gdsc-kgec.png',
+        'robotics': 'robotics-society.png',
+        'robotics-society': 'robotics-society.png',
+        'robochief': 'robotics-society.png',
+        'ecell': 'ecell.png',
+        'sportix': 'sportix.png',
+        'sports': 'sportix.png',
+        'les-quizerables': 'les-quizerables.jpg',
+        'litmus': 'litmus.jpg',
+        'chitrank': 'chitrank.png',
+        'shutterbug': 'shutterbug.png',
+        'riyaz': 'riyaz.png',
+        'elysium': 'elysium.png',
+        'infinitio': 'infinitio.jpeg',
+        'nova': 'nova.jpg',
+        'sac': 'sac.png',
+        'binary': 'binary-hackathon.svg',
+        'binary-hackathon': 'binary-hackathon.svg',
+      };
+      const fileName = clubMap[name.toLowerCase()] || `${name}.png`;
+      src = `${basePath}/clubs/${fileName}`;
       alt = `${name} Club Logo`;
     }
 
@@ -46,7 +70,7 @@ class WebsLogo extends HTMLElement {
         alt="${alt}"
         width="${size}"
         height="${size}"
-        style="width: ${size}px; height: ${size}px; object-fit: contain; display: inline-block; vertical-align: middle;"
+        style="width: ${size}px; height: ${size}px; object-fit: contain; display: inline-block; vertical-align: middle; border-radius: 4px;"
         onerror="this.onerror=null; this.src='${basePath}/institutional/kgec-logo.png';"
       />
     `;
