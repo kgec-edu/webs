@@ -34,32 +34,33 @@ class WebsLogo extends HTMLElement {
       src = `${basePath}/institutional/kgec-logo.svg`;
       alt = 'Kalyani Government Engineering College Official Emblem';
     } else if (variant === 'indian-emblem' || variant === 'national-emblem' || variant === 'ashoka') {
-      src = `${basePath}/institutional/indian-emblem.png`;
+      src = `${basePath}/institutional/indian-emblem.webp`;
       alt = 'National Emblem of India (Lion Capital of Ashoka)';
     } else if (variant === 'club') {
       const clubMap = {
-        'keygencoders': 'keygencoders.jpeg',
-        'gdsc': 'gdsc-kgec.png',
-        'gdsc-kgec': 'gdsc-kgec.png',
-        'robotics': 'robotics-society.png',
-        'robotics-society': 'robotics-society.png',
-        'robochief': 'robotics-society.png',
-        'ecell': 'ecell.png',
-        'sportix': 'sportix.png',
-        'sports': 'sportix.png',
-        'les-quizerables': 'les-quizerables.jpg',
-        'litmus': 'litmus.jpg',
-        'chitrank': 'chitrank.png',
-        'shutterbug': 'shutterbug.png',
-        'riyaz': 'riyaz.png',
-        'elysium': 'elysium.png',
-        'infinitio': 'infinitio.jpeg',
-        'nova': 'nova.jpg',
-        'sac': 'sac.png',
+        'keygencoders': 'keygencoders.webp',
+        'gdsc': 'gdsc-kgec.webp',
+        'gdsc-kgec': 'gdsc-kgec.webp',
+        'robotics': 'robotics-society.webp',
+        'robotics-society': 'robotics-society.webp',
+        'robochief': 'robotics-society.webp',
+        'ecell': 'ecell.webp',
+        'sportix': 'sportix.webp',
+        'sports': 'sportix.webp',
+        'les-quizerables': 'les-quizerables.webp',
+        'litmus': 'litmus.webp',
+        'chitrank': 'chitrank.webp',
+        'shutterbug': 'shutterbug.webp',
+        'sb': 'shutterbug.webp',
+        'riyaz': 'riyaz.webp',
+        'elysium': 'elysium.webp',
+        'infinitio': 'infinitio.webp',
+        'nova': 'nova.webp',
+        'sac': 'sac.webp',
         'binary': 'binary-hackathon.svg',
         'binary-hackathon': 'binary-hackathon.svg',
       };
-      const fileName = clubMap[name.toLowerCase()] || `${name}.png`;
+      const fileName = clubMap[name.toLowerCase()] || `${name}.webp`;
       src = `${basePath}/clubs/${fileName}`;
       alt = `${name} Club Logo`;
     }
