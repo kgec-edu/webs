@@ -8,8 +8,8 @@
 ## 🌟 Why `webs`?
 
 `webs` is an institutional design system modeled after enterprise design systems. It provides a single source of truth for:
-- 🎨 **5 Pluggable Themes** (`theme-1` to `theme-5`) with dynamic CSS variables (Default: IIT Guwahati Signature `#212331` & `#FC9928`).
-- 🏛️ **IIT Guwahati-Inspired Navigation & Mega Menu** components.
+- 🎨 **5 Pluggable Themes** (`theme-1` to `theme-5`) with dynamic CSS variables (Default: KGEC Signature `#212331` & `#FC9928`).
+- 🏛️ **KGEC Institutional Navigation & Mega Menu** components.
 - 🛡️ **Standardized Vector & High-Res Logos**:
   - Official **KGEC Emblem** (SVG, PNG)
   - **State Emblem of India (Ashoka Stambha)** (PNG, SVG)
@@ -108,7 +108,7 @@ You can hotlink vector SVGs and logos anywhere without self-hosting:
 <webs-logo variant="club" name="keygencoders" size="64"></webs-logo>
 <webs-logo variant="club" name="robotics-society" size="64"></webs-logo>
 
-<!-- IIT Guwahati MegaMenu Navbar -->
+<!-- KGEC Institutional MegaMenu Navbar -->
 <webs-navbar active="departments" main-domain="https://website.kgec.edu.in"></webs-navbar>
 
 <!-- Standard Institutional Footer -->
@@ -122,7 +122,7 @@ You can hotlink vector SVGs and logos anywhere without self-hosting:
 Change the theme anytime via the HTML `data-theme` attribute:
 
 ```html
-<!-- Theme 1 (Default): IIT Guwahati Slate Navy & Warm Tangerine -->
+<!-- Theme 1 (Default): KGEC Slate Navy & Warm Tangerine -->
 <html data-theme="theme-1">
 
 <!-- Theme 2: Forest Emerald & Warm Gold -->

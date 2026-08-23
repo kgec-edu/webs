@@ -28,7 +28,7 @@ export const WEBS_THEMES: Record<ThemeName, ThemePreset> = {
   'theme-1': {
     id: 'theme-1',
     name: 'Theme 1 (Default)',
-    description: 'IIT Guwahati Signature Slate Navy & Warm Tangerine Gold',
+    description: 'KGEC Signature Slate Navy & Warm Tangerine Gold',
     primaryColor: '#212331',
     accentColor: '#FC9928',
     tokens: {

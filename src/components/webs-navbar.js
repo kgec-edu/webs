@@ -1,6 +1,6 @@
 /**
  * <webs-navbar> Web Component
- * IIT Guwahati-inspired full institutional mega menu navbar for KGEC.
+ * Official KGEC institutional full mega menu navbar.
  *
  * Usage:
  * <webs-navbar active="departments" main-domain="https://website.kgec.edu.in"></webs-navbar>
