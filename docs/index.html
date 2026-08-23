@@ -7,21 +7,8 @@
   <link rel="icon" type="image/svg+xml" href="./assets/logos/institutional/kgec-logo.svg" />
   <link rel="stylesheet" href="./dist/webs.min.css" />
   <style>
-    :root {
-      --webs-primary: #212331;
-      --webs-primary-deep: #181924;
-      --webs-primary-soft: #2D3042;
-      --webs-accent: #FC9928;
-      --webs-accent-hover: #E68212;
-      --webs-accent-light: #FFF3E0;
-      --webs-bg: #F8F9FA;
-      --webs-surface: #FFFFFF;
-      --webs-text-main: #1E293B;
-      --webs-text-muted: #5E6B7A;
-      --webs-border: #DDE3EA;
-    }
     .demo-section {
-      padding: 60px 0;
+      padding: 48px 0;
       border-bottom: 1px solid var(--webs-border);
     }
     .demo-code {
@@ -39,414 +26,453 @@
       background: var(--webs-surface);
       border: 1px solid var(--webs-border);
       border-radius: 10px;
-      padding: 20px;
+      padding: 18px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.03);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .logo-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      border-color: var(--webs-accent);
+    }
+    .icon-card {
+      background: var(--webs-surface);
+      border: 1px solid var(--webs-border);
+      border-radius: 8px;
+      padding: 14px 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+    .icon-card:hover {
+      background: var(--webs-bg);
+      border-color: var(--webs-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .icon-card .icon-name {
+      font-family: var(--webs-font-mono);
+      font-size: 0.72rem;
+      color: var(--webs-text-muted);
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     .color-swatch {
-      height: 70px;
+      height: 64px;
       border-radius: 6px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       display: flex;
       align-items: flex-end;
       padding: 6px 8px;
       font-family: var(--webs-font-mono, monospace);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
+    }
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #181924;
+      color: #FFFFFF;
+      padding: 10px 18px;
+      border-radius: 6px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-left: 4px solid var(--webs-accent);
+      z-index: 99999;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.25s ease;
+      pointer-events: none;
+    }
+    .toast-msg.show {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body class="webs-body">
 
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-msg">Copied to clipboard!</div>
+
   <!-- Top Utility Bar -->
-  <div class="webs-topbar">
-    <div class="webs-container webs-topbar-inner">
+  <div style="background-color: var(--webs-primary-deep); color: #CBD5E1; font-size: 0.8rem; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+    <div class="webs-container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
       <div>
-        <span>Institutional Design System: <strong>webs v1.0.0</strong></span>
+        <span>Design System: <strong>webs v1.1.0</strong></span>
         <span style="margin: 0 8px; opacity: 0.5;">|</span>
-        <span>Maintained by Department of CSE</span>
+        <span>Kalyani Government Engineering College</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 16px;">
-        <label for="themeSelector" style="font-size: 0.78rem; font-weight: 600;">Theme: </label>
-        <select id="themeSelector" style="background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; padding: 3px 8px; font-size: 0.78rem; cursor: pointer;">
-          <option value="theme-1">Theme 1 (IITG Slate Navy &amp; Warm Tangerine)</option>
-          <option value="theme-2">Theme 2 (Forest Emerald &amp; Warm Gold)</option>
-          <option value="theme-3">Theme 3 (Oxford Royal Blue &amp; Solar Gold)</option>
-          <option value="theme-4">Theme 4 (Heritage Crimson &amp; Amber)</option>
-          <option value="theme-5">Theme 5 (Midnight Slate Minimal)</option>
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <label for="themeSelector" style="font-size: 0.78rem; font-weight: 600;">Theme Preset: </label>
+        <select id="themeSelector" style="padding: 4px 8px; border-radius: 4px; border: 1px solid #CBD5E1; font-size: 0.78rem; background: #FFFFFF; color: #1E293B; cursor: pointer;">
+          <option value="theme-1">Theme 1: KGEC Slate Navy &amp; Warm Tangerine (Default)</option>
+          <option value="theme-2">Theme 2: Lush Forest Emerald</option>
+          <option value="theme-3">Theme 3: Oxford Royal Blue &amp; Solar Gold</option>
+          <option value="theme-4">Theme 4: Heritage Crimson</option>
+          <option value="theme-5">Theme 5: Midnight Slate Minimal</option>
         </select>
-        <a href="https://github.com/kgec-edu/webs" target="_blank" class="webs-topbar-link" style="display: flex; align-items: center; gap: 4px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
-        <a href="https://website.kgec.edu.in" target="_blank" class="webs-topbar-link">Main Portal</a>
       </div>
     </div>
   </div>
 
-  <!-- Header -->
-  <header class="webs-header">
-    <div class="webs-container webs-header-inner">
-      <div class="webs-brand">
-        <img src="./assets/logos/institutional/kgec-logo.svg" alt="KGEC Logo" class="webs-logo-img" />
+  <!-- Header & Navbar Component -->
+  <header style="background: var(--webs-primary); color: #FFFFFF; padding: 24px 0 16px; border-bottom: 3px solid var(--webs-accent);">
+    <div class="webs-container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <img src="./assets/logos/institutional/kgec-logo.svg" width="56" height="56" alt="KGEC Logo" />
         <div>
-          <div style="font-size: 0.85rem; font-weight: 600; color: var(--webs-secondary);">কল্যাণী গভর্নমেন্ট ইঞ্জিনিয়ারিং কলেজ</div>
-          <h1 style="font-size: 1.4rem; margin: 0; color: var(--webs-primary-deep);">webs Design System</h1>
-          <div style="font-size: 0.78rem; color: var(--webs-text-muted);">Unified Design System, Emblems &amp; Club Assets Hub for KGEC</div>
+          <span class="webs-eyebrow" style="color: var(--webs-accent);">Official Design System</span>
+          <h1 style="font-size: 1.6rem; color: #FFFFFF; margin: 0; line-height: 1.2;">webs Design System</h1>
+          <p style="margin: 2px 0 0; font-size: 0.85rem; color: #CBD5E1;">Design tokens, Typography Scale, Vector Icons &amp; Web Components</p>
         </div>
       </div>
-      <div style="display: flex; align-items: center; gap: 16px;">
-        <img src="./assets/logos/institutional/indian-emblem.png" alt="National Emblem of India" class="webs-ashoka-img" />
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <a href="#typography" class="webs-btn webs-btn-accent webs-btn-sm">Typography Scale</a>
+        <a href="#icons" class="webs-btn webs-btn-outline webs-btn-sm" style="color: #FFFFFF; border-color: rgba(255,255,255,0.3);">Icon Library (70+)</a>
+        <a href="#themes" class="webs-btn webs-btn-outline webs-btn-sm" style="color: #FFFFFF; border-color: rgba(255,255,255,0.3);">Theme Tokens</a>
+        <a href="#logos" class="webs-btn webs-btn-outline webs-btn-sm" style="color: #FFFFFF; border-color: rgba(255,255,255,0.3);">Logos &amp; Assets</a>
       </div>
     </div>
   </header>
 
-  <!-- Mega Menu Navigation Component -->
-  <nav class="webs-nav">
-    <div class="webs-container webs-nav-inner">
-      <ul class="webs-nav-list">
-        <li class="webs-nav-item">
-          <a href="#overview" class="webs-nav-link" style="background-color: var(--webs-primary-deep);">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </a>
-        </li>
-        <li class="webs-nav-item"><a href="#github-cdn" class="webs-nav-link">GitHub CDN</a></li>
-        <li class="webs-nav-item"><a href="#themes" class="webs-nav-link">Themes</a></li>
-        <li class="webs-nav-item"><a href="#institutional-logos" class="webs-nav-link">Institutional Emblems</a></li>
-        <li class="webs-nav-item"><a href="#club-logos" class="webs-nav-link">Club Logos (14)</a></li>
-        <li class="webs-nav-item"><a href="#components" class="webs-nav-link">Components</a></li>
-      </ul>
-      <div>
-        <a href="https://github.com/kgec-edu/webs" target="_blank" class="webs-btn webs-btn-accent" style="padding: 6px 14px; font-size: 0.78rem;">
-          View on GitHub
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section id="overview" style="background: linear-gradient(135deg, var(--webs-primary-deep) 0%, var(--webs-primary) 100%); color: #FFFFFF; padding: 70px 0; border-bottom: 4px solid var(--webs-accent);">
-    <div class="webs-container" style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center;">
-      <div>
-        <span class="webs-badge webs-badge-accent" style="margin-bottom: 14px;">Open Source • kgec-edu</span>
-        <h2 style="color: #FFFFFF; font-size: 2.5rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px;">
-          The Official Design System for All KGEC Websites &amp; Clubs
-        </h2>
-        <p style="font-size: 1.05rem; color: #CBD5E1; line-height: 1.6; margin-bottom: 24px;">
-          Free, globally accelerated via GitHub CDN (jsDelivr &amp; Statically) for department websites, faculty portfolios, student clubs, hackathons, and GitHub Pages.
-        </p>
-        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-          <a href="#github-cdn" class="webs-btn webs-btn-accent">GitHub CDN Links</a>
-          <a href="#club-logos" class="webs-btn webs-btn-primary" style="background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3);">Explore 14 Club Logos</a>
-        </div>
-      </div>
-      <div style="text-align: center;">
-        <img src="./assets/logos/institutional/kgec-logo.svg" alt="KGEC Emblem" style="width: 200px; height: 200px; filter: drop-shadow(0 12px 28px rgba(0,0,0,0.35));" />
-      </div>
-    </div>
-  </section>
-
-  <!-- GitHub CDN Integration Section -->
-  <section id="github-cdn" class="demo-section">
+  <!-- =========================================================================
+       SECTION 1: TYPOGRAPHY SYSTEM
+       ========================================================================= -->
+  <section id="typography" class="demo-section">
     <div class="webs-container">
-      <h2 class="webs-title">1. Free GitHub CDN (jsDelivr &amp; Statically)</h2>
-      <p style="color: var(--webs-text-muted);">
-        Directly embed the design system from GitHub into any static HTML, Markdown, or GitHub Pages site with global Cloudflare edge caching:
+      <span class="webs-eyebrow">Visual Hierarchy &amp; Scales</span>
+      <h2 class="webs-title">1. Typography System</h2>
+      <p class="webs-lead">
+        A mathematically tuned type scale designed for extreme readability on high-density displays, 4G mobile devices, and academic portal layouts.
       </p>
 
-      <h3 style="font-size: 1.05rem; margin: 18px 0 8px;">Option A: jsDelivr GitHub CDN</h3>
-      <div class="demo-code">
-&lt;!-- 1. Universal webs CSS Framework --&gt;
-&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/dist/webs.min.css" /&gt;
+      <!-- Font Stacks Grid -->
+      <div class="webs-grid webs-grid-3" style="margin-bottom: 32px;">
+        <div class="webs-card">
+          <span class="webs-badge webs-badge-primary">Heading Font Stack</span>
+          <h3 style="font-family: var(--webs-font-heading); font-size: 1.25rem; margin: 10px 0 4px;">Outfit</h3>
+          <p style="font-size: 0.84rem; color: var(--webs-text-muted); margin: 0 0 10px;">Used for titles, section headings, display metrics, and navigation brands.</p>
+          <code class="webs-code">var(--webs-font-heading)</code>
+        </div>
 
-&lt;!-- 2. Web Components Runtime --&gt;
-&lt;script type="module" src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/dist/webs.js"&gt;&lt;/script&gt;
+        <div class="webs-card">
+          <span class="webs-badge webs-badge-accent">Body &amp; UI Font Stack</span>
+          <h3 style="font-family: var(--webs-font-body); font-size: 1.25rem; margin: 10px 0 4px;">Plus Jakarta Sans</h3>
+          <p style="font-size: 0.84rem; color: var(--webs-text-muted); margin: 0 0 10px;">Used for all body paragraphs, table content, cards, inputs, and button labels.</p>
+          <code class="webs-code">var(--webs-font-body)</code>
+        </div>
+
+        <div class="webs-card">
+          <span class="webs-badge webs-badge-secondary">Monospace &amp; Data Stack</span>
+          <h3 style="font-family: var(--webs-font-mono); font-size: 1.25rem; margin: 10px 0 4px;">JetBrains Mono</h3>
+          <p style="font-size: 0.84rem; color: var(--webs-text-muted); margin: 0 0 10px;">Used for tender numbers, notice reference IDs, code snippets, and timestamps.</p>
+          <code class="webs-code">var(--webs-font-mono)</code>
+        </div>
       </div>
 
-      <h3 style="font-size: 1.05rem; margin: 18px 0 8px;">Option B: Statically GitHub CDN</h3>
-      <div class="demo-code">
-&lt;link rel="stylesheet" href="https://cdn.statically.io/gh/kgec-edu/webs/main/dist/webs.min.css" /&gt;
-&lt;script type="module" src="https://cdn.statically.io/gh/kgec-edu/webs/main/dist/webs.js"&gt;&lt;/script&gt;
+      <!-- Live Type Scale Table -->
+      <h3 style="font-size: 1.2rem; margin-bottom: 14px;">Complete Type Scale Hierarchy</h3>
+      <div class="webs-table-wrapper" style="margin-bottom: 36px;">
+        <table class="webs-table">
+          <thead>
+            <tr>
+              <th style="width: 140px;">Scale Level</th>
+              <th style="width: 120px;">CSS Class</th>
+              <th style="width: 140px;">Size / Line Height</th>
+              <th>Visual Sample Preview</th>
+              <th style="width: 100px; text-align: right;">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Display / Hero</strong></td>
+              <td><code class="webs-code">.webs-text-6xl</code></td>
+              <td>60px / 1.1</td>
+              <td><span class="webs-text-6xl webs-font-extrabold" style="color: var(--webs-primary-deep);">KGEC Portal</span></td>
+              <td style="text-align: right;"><button class="webs-btn webs-btn-outline webs-btn-sm" onclick="copySnippet('.webs-text-6xl')">Copy</button></td>
+            </tr>
+            <tr>
+              <td><strong>Heading 1 (H1)</strong></td>
+              <td><code class="webs-code">.webs-text-4xl</code></td>
+              <td>36px / 1.25</td>
+              <td><span class="webs-text-4xl webs-font-extrabold" style="color: var(--webs-primary-deep);">Department of Computer Science</span></td>
+              <td style="text-align: right;"><button class="webs-btn webs-btn-outline webs-btn-sm" onclick="copySnippet('.webs-text-4xl')">Copy</button></td>
+            </tr>
+            <tr>
+              <td><strong>Heading 2 (H2)</strong></td>
+              <td><code class="webs-code">.webs-text-3xl</code></td>
+              <td>30px / 1.3</td>
+              <td><span class="webs-text-3xl webs-font-bold" style="color: var(--webs-primary-deep);">Upcoming Events &amp; Conclaves</span></td>
+              <td style="text-align: right;"><button class="webs-btn webs-btn-outline webs-btn-sm" onclick="copySnippet('.webs-text-3xl')">Copy</button></td>
+            </tr>
+            <tr>
+              <td><strong>Heading 3 (H3)</strong></td>
+              <td><code class="webs-code">.webs-text-2xl</code></td>
+              <td>24px / 1.35</td>
+              <td><span class="webs-text-2xl webs-font-bold" style="color: var(--webs-primary-deep);">AI &amp; Neural Computing Research Lab</span></td>
+              <td style="text-align: right;"><button class="webs-btn webs-btn-outline webs-btn-sm" onclick="copySnippet('.webs-text-2xl')">Copy</button></td>
+            </tr>
+            <tr>
+              <td><strong>Heading 4 (H4)</strong></td>
+              <td><code class="webs-code">.webs-text-xl</code></td>
+              <td>20px / 1.4</td>
+              <td><span class="webs-text-xl webs-font-semibold" style="color: var(--webs-primary-deep);">BINARY 2026 National Hackathon</span></td>
+              <td style="text-align: right;"><button class="webs-btn webs-btn-outline webs-btn-sm" onclick="copySnippet('.webs-text-xl')">Copy</button></td>
+            </tr>
+            <tr>
+              <td><strong>Lead Paragraph</strong></td>
+              <td><code class="webs-code">.webs-text-lg</code></td>
+              <td>18px / 1.5</td>
+              <td><span class="webs-text-lg webs-lead" style="margin: 0;">Premier engineering education fostering research and leadership.</span></td>
+              <td style="text-align: right;"><button class="webs-btn webs-btn-outline webs-btn-sm" onclick="copySnippet('.webs-text-lg')">Copy</button></td>
+            </tr>
+            <tr>
+              <td><strong>Body (Default)</strong></td>
+              <td><code class="webs-code">.webs-text-base</code></td>
+              <td>16px / 1.6</td>
+              <td><span class="webs-text-base">Undergraduate B.Tech and postgraduate M.Tech engineering programs.</span></td>
+              <td style="text-align: right;"><button class="webs-btn webs-btn-outline webs-btn-sm" onclick="copySnippet('.webs-text-base')">Copy</button></td>
+            </tr>
+            <tr>
+              <td><strong>Body Small / UI</strong></td>
+              <td><code class="webs-code">.webs-text-sm</code></td>
+              <td>14px / 1.5</td>
+              <td><span class="webs-text-sm" style="color: var(--webs-text-muted);">Published on 23 Aug 2026 • Ref: KGEC/CSE/2026/08</span></td>
+              <td style="text-align: right;"><button class="webs-btn webs-btn-outline webs-btn-sm" onclick="copySnippet('.webs-text-sm')">Copy</button></td>
+            </tr>
+            <tr>
+              <td><strong>Caption / Eyebrow</strong></td>
+              <td><code class="webs-code">.webs-text-xs</code></td>
+              <td>12px / 1.4</td>
+              <td><span class="webs-eyebrow">HAPPENING ON CAMPUS</span></td>
+              <td style="text-align: right;"><button class="webs-btn webs-btn-outline webs-btn-sm" onclick="copySnippet('.webs-text-xs')">Copy</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <div class="webs-grid webs-grid-3" style="margin-top: 24px;">
-        <div class="webs-card webs-card-bordered">
-          <span class="webs-badge webs-badge-primary" style="margin-bottom: 8px;">Zero Config</span>
-          <h4 style="margin-bottom: 8px;">No Node.js Required</h4>
-          <p style="font-size: 0.85rem; color: var(--webs-text-muted);">Drop two lines of HTML into any index.html and you have the complete KGEC styling and theme tokens.</p>
+      <!-- Live Interactive Type Tester Playground -->
+      <div class="webs-card" style="background: var(--webs-surface); border: 2px solid var(--webs-accent); padding: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <span class="webs-eyebrow">Interactive Tool</span>
+            <h3 style="margin: 0; font-size: 1.15rem;">Live Type Tester Playground</h3>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+            <label style="font-size: 0.8rem; font-weight: 600;">Font Family: </label>
+            <select id="testerFont" style="padding: 4px 8px; border-radius: 4px; border: 1px solid #CBD5E1; font-size: 0.8rem;">
+              <option value="Outfit, sans-serif">Outfit (Heading)</option>
+              <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans (Body)</option>
+              <option value="'JetBrains Mono', monospace">JetBrains Mono (Code)</option>
+              <option value="'Merriweather', serif">Merriweather (Serif)</option>
+              <option value="'Hind Siliguri', sans-serif">Hind Siliguri (Bengali / Indic)</option>
+            </select>
+
+            <label style="font-size: 0.8rem; font-weight: 600; margin-left: 8px;">Size: <span id="sizeVal">32px</span></label>
+            <input type="range" id="testerSize" min="12" max="64" value="32" style="width: 120px;" />
+          </div>
         </div>
-        <div class="webs-card webs-card-accent">
-          <span class="webs-badge webs-badge-accent" style="margin-bottom: 8px;">Global Edge</span>
-          <h4 style="margin-bottom: 8px;">Automated Updates</h4>
-          <p style="font-size: 0.85rem; color: var(--webs-text-muted);">Every commit to <code>main</code> on <code>kgec-edu/webs</code> updates the CDN bundle automatically.</p>
-        </div>
-        <div class="webs-card webs-card-bordered">
-          <span class="webs-badge webs-badge-success" style="margin-bottom: 8px;">Universal</span>
-          <h4 style="margin-bottom: 8px;">GitHub Pages Native</h4>
-          <p style="font-size: 0.85rem; color: var(--webs-text-muted);">Perfect for club websites hosted on <code>*.github.io</code> with seamless HTTPS support.</p>
+
+        <input
+          type="text"
+          id="testerInput"
+          value="Kalyani Government Engineering College — Excellence in Engineering & Research"
+          style="width: 100%; padding: 12px 16px; border: 1px solid var(--webs-border); border-radius: 6px; font-size: 1rem; margin-bottom: 16px;"
+        />
+
+        <div id="testerPreview" style="font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 700; color: var(--webs-primary-deep); line-height: 1.25; min-height: 60px; word-break: break-word;">
+          Kalyani Government Engineering College — Excellence in Engineering &amp; Research
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Themes Matrix -->
-  <section id="themes" class="demo-section" style="background: var(--webs-surface);">
+  <!-- =========================================================================
+       SECTION 2: ICONOGRAPHY SYSTEM (70+ VECTOR ICONS)
+       ========================================================================= -->
+  <section id="icons" class="demo-section" style="background-color: var(--webs-bg);">
     <div class="webs-container">
-      <h2 class="webs-title">2. Pluggable Themes Matrix</h2>
-      <p style="color: var(--webs-text-muted); margin-bottom: 24px;">5 calibrated academic themes with automatic dark-contrast calculation and dynamic CSS variables:</p>
+      <span class="webs-eyebrow">SVG Icon Library</span>
+      <h2 class="webs-title">2. Iconography System</h2>
+      <p class="webs-lead">
+        Over 70 crisp, 24x24 vector icons meticulously crafted with unified 2px strokes. Ready as Web Components (<code class="webs-code">&lt;webs-icon&gt;</code>), React components (<code class="webs-code">&lt;WebsIcon /&gt;</code>), or raw SVG strings.
+      </p>
 
-      <div class="webs-grid webs-grid-3">
-        <!-- Theme 1 -->
-        <div class="webs-card webs-card-bordered">
-          <h4 style="margin-bottom: 4px;">Theme 1 (Default)</h4>
-          <div style="font-size: 0.78rem; color: var(--webs-text-muted); margin-bottom: 12px;">IIT Guwahati Slate Navy &amp; Tangerine Gold</div>
-          <div class="color-swatch" style="background: #212331; color: #FFF;">#212331 (Primary)</div>
-          <div class="color-swatch" style="background: #FC9928; color: #181924;">#FC9928 (Accent)</div>
+      <!-- Icon Control Bar (Search, Category Filters & Size Toggles) -->
+      <div style="background: var(--webs-surface); border: 1px solid var(--webs-border); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+        <!-- Search Input -->
+        <div style="flex: 1; min-width: 240px; position: relative;">
+          <input
+            type="text"
+            id="iconSearch"
+            placeholder="Search icons (e.g. academic, search, book, lab, user, mail)..."
+            style="width: 100%; padding: 8px 12px; border: 1px solid #CBD5E1; border-radius: 4px; font-size: 0.85rem;"
+          />
         </div>
 
-        <!-- Theme 2 -->
-        <div class="webs-card webs-card-bordered">
-          <h4 style="margin-bottom: 4px;">Theme 2</h4>
-          <div style="font-size: 0.78rem; color: var(--webs-text-muted); margin-bottom: 12px;">Forest Emerald &amp; Warm Gold</div>
-          <div class="color-swatch" style="background: #064E3B; color: #FFF;">#064E3B (Primary)</div>
-          <div class="color-swatch" style="background: #F59E0B; color: #022C22;">#F59E0B (Accent)</div>
+        <!-- Category Pills -->
+        <div id="categoryPills" style="display: flex; gap: 6px; flex-wrap: wrap;">
+          <button class="webs-btn webs-btn-primary webs-btn-sm" data-cat="all">All Icons (<span id="iconCount">70</span>)</button>
+          <button class="webs-btn webs-btn-outline webs-btn-sm" data-cat="navigation">Navigation</button>
+          <button class="webs-btn webs-btn-outline webs-btn-sm" data-cat="academic">Academic &amp; Labs</button>
+          <button class="webs-btn webs-btn-outline webs-btn-sm" data-cat="communication">Communication</button>
+          <button class="webs-btn webs-btn-outline webs-btn-sm" data-cat="security">Security</button>
+          <button class="webs-btn webs-btn-outline webs-btn-sm" data-cat="media">Media &amp; UI</button>
         </div>
 
-        <!-- Theme 3 -->
-        <div class="webs-card webs-card-bordered">
-          <h4 style="margin-bottom: 4px;">Theme 3</h4>
-          <div style="font-size: 0.78rem; color: var(--webs-text-muted); margin-bottom: 12px;">Oxford Royal Blue &amp; Solar Gold</div>
-          <div class="color-swatch" style="background: #1E3A8A; color: #FFF;">#1E3A8A (Primary)</div>
-          <div class="color-swatch" style="background: #EAB308; color: #172554;">#EAB308 (Accent)</div>
+        <!-- Size Toggle -->
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-size: 0.78rem; font-weight: 700; color: var(--webs-text-muted);">Size:</span>
+          <select id="iconSizeSelect" style="padding: 4px 8px; border-radius: 4px; border: 1px solid #CBD5E1; font-size: 0.78rem;">
+            <option value="xs">XS (14px)</option>
+            <option value="sm">SM (18px)</option>
+            <option value="md" selected>MD (22px)</option>
+            <option value="lg">LG (28px)</option>
+            <option value="xl">XL (36px)</option>
+            <option value="2xl">2XL (48px)</option>
+          </select>
         </div>
+      </div>
 
-        <!-- Theme 4 -->
-        <div class="webs-card webs-card-bordered">
-          <h4 style="margin-bottom: 4px;">Theme 4</h4>
-          <div style="font-size: 0.78rem; color: var(--webs-text-muted); margin-bottom: 12px;">Heritage Crimson &amp; Amber</div>
-          <div class="color-swatch" style="background: #881337; color: #FFF;">#881337 (Primary)</div>
-          <div class="color-swatch" style="background: #F59E0B; color: #4C0519;">#F59E0B (Accent)</div>
+      <!-- Icon Cards Grid Container -->
+      <div id="iconsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px;">
+        <!-- Dynamically populated by JS below -->
+      </div>
+
+      <!-- Usage Code Box -->
+      <div class="demo-code" style="margin-top: 24px;">
+&lt;!-- HTML / Web Component Usage --&gt;
+&lt;webs-icon name="academic-cap" size="md"&gt;&lt;/webs-icon&gt;
+&lt;webs-icon name="microscope" size="lg" class="webs-icon-accent"&gt;&lt;/webs-icon&gt;
+
+&lt;!-- React Component Usage --&gt;
+import { WebsIcon } from '@kgec-edu/webs';
+&lt;WebsIcon name="academic-cap" size="md" /&gt;
+&lt;WebsIcon name="cpu" size="lg" className="webs-icon-primary" /&gt;
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION 3: THEME PRESETS & COLOR TOKENS
+       ========================================================================= -->
+  <section id="themes" class="demo-section">
+    <div class="webs-container">
+      <span class="webs-eyebrow">Design Tokens</span>
+      <h2 class="webs-title">3. Institutional Color Themes</h2>
+      <p class="webs-lead">Five unified palette tokens rigorously meeting WCAG AA high-contrast standards.</p>
+
+      <div class="webs-grid webs-grid-4">
+        <div>
+          <div class="color-swatch" style="background-color: var(--webs-primary); color: #FFFFFF;">Primary</div>
+          <span style="font-size: 0.75rem; color: var(--webs-text-muted);">Main header, banners, deep brand</span>
         </div>
-
-        <!-- Theme 5 -->
-        <div class="webs-card webs-card-bordered">
-          <h4 style="margin-bottom: 4px;">Theme 5</h4>
-          <div style="font-size: 0.78rem; color: var(--webs-text-muted); margin-bottom: 12px;">Midnight Slate Minimal</div>
-          <div class="color-swatch" style="background: #0F172A; color: #FFF;">#0F172A (Primary)</div>
-          <div class="color-swatch" style="background: #EAB308; color: #020617;">#EAB308 (Accent)</div>
+        <div>
+          <div class="color-swatch" style="background-color: var(--webs-accent); color: #181924;">Accent</div>
+          <span style="font-size: 0.75rem; color: var(--webs-text-muted);">Action buttons, active indicators</span>
+        </div>
+        <div>
+          <div class="color-swatch" style="background-color: var(--webs-secondary); color: #FFFFFF;">Secondary</div>
+          <span style="font-size: 0.75rem; color: var(--webs-text-muted);">Eyebrows, alerts, badge accents</span>
+        </div>
+        <div>
+          <div class="color-swatch" style="background-color: var(--webs-surface); border: 1px solid var(--webs-border); color: var(--webs-text-main);">Surface</div>
+          <span style="font-size: 0.75rem; color: var(--webs-text-muted);">Card containers, modals, whiteboards</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Institutional Emblems Hub -->
-  <section id="institutional-logos" class="demo-section">
+  <!-- =========================================================================
+       SECTION 4: LOGOS & ASSET VAULT
+       ========================================================================= -->
+  <section id="logos" class="demo-section" style="background: var(--webs-bg);">
     <div class="webs-container">
-      <h2 class="webs-title">3. Institutional &amp; National Emblems</h2>
-      <p style="color: var(--webs-text-muted); margin-bottom: 24px;">Official vector SVG and high-resolution PNG assets for KGEC portals and publications.</p>
+      <span class="webs-eyebrow">Institutional Branding</span>
+      <h2 class="webs-title">4. Logos &amp; Asset Vault</h2>
+      <p class="webs-lead">Optimized vector SVG and transparent WebP format assets with 1-click downloads.</p>
 
-      <div class="webs-grid webs-grid-3">
-        <!-- KGEC Emblem -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;">
+        
+        <!-- KGEC Logo -->
         <div class="logo-card">
-          <img src="./assets/logos/institutional/kgec-logo.svg" width="96" height="96" alt="KGEC Logo" style="object-fit: contain;" />
-          <h4 style="margin: 0;">KGEC Official Emblem</h4>
-          <span class="webs-badge webs-badge-primary">Vector SVG &amp; PNG</span>
-          <div style="display: flex; gap: 8px;">
-            <a href="./assets/logos/institutional/kgec-logo.svg" download class="webs-btn webs-btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">Download SVG</a>
-            <a href="./assets/logos/institutional/kgec-logo.png" download class="webs-btn webs-btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">PNG</a>
+          <img src="./assets/logos/institutional/kgec-logo.svg" width="70" height="70" alt="KGEC Emblem" />
+          <h4 style="margin: 0; font-size: 0.92rem;">KGEC Emblem</h4>
+          <span class="webs-badge webs-badge-primary">Vector SVG</span>
+          <div style="display: flex; gap: 6px;">
+            <a href="./assets/logos/institutional/kgec-logo.svg" download class="webs-btn webs-btn-outline webs-btn-sm" style="font-size: 0.72rem;">SVG</a>
+            <a href="./assets/logos/institutional/kgec-logo.webp" download class="webs-btn webs-btn-outline webs-btn-sm" style="font-size: 0.72rem;">WebP</a>
           </div>
         </div>
 
         <!-- National Emblem of India -->
         <div class="logo-card">
-          <img src="./assets/logos/institutional/indian-emblem.webp" width="80" height="96" alt="National Emblem of India" style="object-fit: contain;" />
-          <h4 style="margin: 0;">National Emblem of India</h4>
-          <span class="webs-badge webs-badge-accent">Official 2D Black &amp; Transparent</span>
-          <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;">
-            <a href="./assets/logos/institutional/indian-emblem.webp" download="indian-emblem.webp" class="webs-btn webs-btn-accent" style="padding: 4px 8px; font-size: 0.72rem;">WebP</a>
-            <a href="./assets/logos/institutional/indian-emblem.png" download="indian-emblem.png" class="webs-btn webs-btn-outline" style="padding: 4px 8px; font-size: 0.72rem;">PNG</a>
-            <a href="./assets/logos/institutional/indian-emblem.svg" download="indian-emblem.svg" class="webs-btn webs-btn-outline" style="padding: 4px 8px; font-size: 0.72rem;">SVG</a>
+          <img src="./assets/logos/institutional/national-emblem.webp" width="70" height="70" alt="National Emblem of India" style="object-fit: contain;" />
+          <h4 style="margin: 0; font-size: 0.92rem;">National Emblem</h4>
+          <span class="webs-badge webs-badge-accent">Govt of India</span>
+          <div style="display: flex; gap: 6px;">
+            <a href="./assets/logos/institutional/national-emblem.webp" download class="webs-btn webs-btn-outline webs-btn-sm" style="font-size: 0.72rem;">WebP</a>
+            <a href="./assets/logos/institutional/national-emblem.png" download class="webs-btn webs-btn-outline webs-btn-sm" style="font-size: 0.72rem;">PNG</a>
           </div>
         </div>
 
-        <!-- KGEC Transparent -->
+        <!-- Shutterbug -->
         <div class="logo-card">
-          <img src="./assets/logos/institutional/kgec-logo.png" width="96" height="96" alt="KGEC Emblem" style="object-fit: contain;" />
-          <h4 style="margin: 0;">KGEC Crest (Transparent)</h4>
-          <span class="webs-badge webs-badge-success">High-Res PNG</span>
-          <div style="display: flex; gap: 8px;">
-            <a href="./assets/logos/institutional/kgec-logo.png" download class="webs-btn webs-btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">Download PNG</a>
+          <img src="./assets/logos/clubs/shutterbug.webp" width="70" height="70" alt="Shutterbug KGEC" style="object-fit: contain;" />
+          <h4 style="margin: 0; font-size: 0.92rem;">Shutterbug</h4>
+          <span class="webs-badge webs-badge-secondary">Photography Club</span>
+          <div style="display: flex; gap: 6px;">
+            <a href="./assets/logos/clubs/shutterbug.webp" download class="webs-btn webs-btn-outline webs-btn-sm" style="font-size: 0.72rem;">WebP</a>
+            <a href="./assets/logos/clubs/shutterbug.png" download class="webs-btn webs-btn-outline webs-btn-sm" style="font-size: 0.72rem;">PNG</a>
           </div>
         </div>
+
+        <!-- Keygencoders -->
+        <div class="logo-card">
+          <img src="./assets/logos/clubs/keygencoders.webp" width="70" height="70" alt="Keygencoders" style="object-fit: contain; border-radius: 6px;" />
+          <h4 style="margin: 0; font-size: 0.92rem;">Keygencoders</h4>
+          <span class="webs-badge webs-badge-primary">Coding Society</span>
+          <a href="./assets/logos/clubs/keygencoders.webp" download class="webs-btn webs-btn-outline webs-btn-sm" style="font-size: 0.72rem;">WebP</a>
+        </div>
+
+        <!-- Robotics Society -->
+        <div class="logo-card">
+          <img src="./assets/logos/clubs/kgec_rs_light_1920px.webp" width="70" height="70" alt="Robotics Society" style="object-fit: contain;" />
+          <h4 style="margin: 0; font-size: 0.92rem;">Robotics Society</h4>
+          <span class="webs-badge webs-badge-accent">Hardware &amp; AI</span>
+          <a href="./assets/logos/clubs/kgec_rs_light_1920px.webp" download class="webs-btn webs-btn-outline webs-btn-sm" style="font-size: 0.72rem;">WebP</a>
+        </div>
+
+        <!-- E-Cell -->
+        <div class="logo-card">
+          <img src="./assets/logos/clubs/ecell.webp" width="70" height="70" alt="E-Cell" style="object-fit: contain;" />
+          <h4 style="margin: 0; font-size: 0.92rem;">E-Cell KGEC</h4>
+          <span class="webs-badge webs-badge-secondary">Entrepreneurship</span>
+          <a href="./assets/logos/clubs/ecell.webp" download class="webs-btn webs-btn-outline webs-btn-sm" style="font-size: 0.72rem;">WebP</a>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- 14 Official Student Club Logos Hub -->
-  <section id="club-logos" class="demo-section" style="background: var(--webs-surface);">
-    <div class="webs-container">
-      <div style="display: flex; justify-content: space-between; alignItems: flex-end; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;">
-        <div>
-          <h2 class="webs-title" style="margin-bottom: 4px;">Student Societies &amp; Club Logos (14)</h2>
-          <p style="color: var(--webs-text-muted); margin: 0;">All 14 active student club logos preserved in high fidelity for web and print use.</p>
-        </div>
-        <a href="https://github.com/kgec-edu/webs/tree/main/assets/logos/clubs" target="_blank" class="webs-btn webs-btn-primary" style="padding: 6px 14px; font-size: 0.8rem;">
-          View on GitHub Repo &rarr;
-        </a>
-      </div>
-
-      <div class="webs-grid webs-grid-4">
-        <!-- 1. Keygencoders -->
-        <div class="logo-card">
-          <img src="./assets/logos/clubs/keygencoders.jpeg" width="80" height="80" alt="Keygencoders" style="object-fit: contain; border-radius: 8px;" />
-          <h4 style="margin: 0; font-size: 0.95rem;">Keygencoders</h4>
-          <span class="webs-badge webs-badge-primary">Coding &amp; Algorithms</span>
-          <a href="./assets/logos/clubs/keygencoders.jpeg" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
-        </div>
-
-        <!-- 2. GDSC KGEC -->
-        <div class="logo-card">
-          <img src="./assets/logos/clubs/gdsc-kgec.png" width="80" height="80" alt="GDSC KGEC" style="object-fit: contain;" />
-          <h4 style="margin: 0; font-size: 0.95rem;">GDSC KGEC</h4>
-          <span class="webs-badge webs-badge-accent">Google Developers</span>
-          <a href="./assets/logos/clubs/gdsc-kgec.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
-        </div>
-
-        <!-- 3. Robotics Society -->
-        <div class="logo-card">
-          <img src="./assets/logos/clubs/robotics-society.png" width="80" height="80" alt="Robotics Society" style="object-fit: contain;" />
-          <h4 style="margin: 0; font-size: 0.95rem;">Robotics Society</h4>
-          <span class="webs-badge webs-badge-danger">Robotics &amp; IoT</span>
-          <a href="./assets/logos/clubs/robotics-society.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
-        </div>
-
-        <!-- 4. E-Cell -->
-        <div class="logo-card">
-          <img src="./assets/logos/clubs/ecell.png" width="80" height="80" alt="E-Cell" style="object-fit: contain;" />
-          <h4 style="margin: 0; font-size: 0.95rem;">E-Cell (EDC)</h4>
-          <span class="webs-badge webs-badge-success">Entrepreneurship</span>
-          <a href="./assets/logos/clubs/ecell.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
-        </div>
-
-        <!-- 5. Sportix -->
-        <div class="logo-card">
-          <img src="./assets/logos/clubs/sportix.png" width="80" height="80" alt="Sportix" style="object-fit: contain;" />
-          <h4 style="margin: 0; font-size: 0.95rem;">Sportix</h4>
-          <span class="webs-badge webs-badge-primary">Sports &amp; Athletics</span>
-          <a href="./assets/logos/clubs/sportix.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
-        </div>
-
-        <!-- 6. Les Quizerables -->
-        <div class="logo-card">
-          <img src="./assets/logos/clubs/les-quizerables.jpg" width="80" height="80" alt="Les Quizerables" style="object-fit: contain; border-radius: 8px;" />
-          <h4 style="margin: 0; font-size: 0.95rem;">Les Quizerables</h4>
-          <span class="webs-badge webs-badge-accent">Quiz Society</span>
-          <a href="./assets/logos/clubs/les-quizerables.jpg" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
-        </div>
-
-        <!-- 7. Litmus -->
-        <div class="logo-card">
-          <img src="./assets/logos/clubs/litmus.jpg" width="80" height="80" alt="Litmus" style="object-fit: contain; border-radius: 8px;" />
-          <h4 style="margin: 0; font-size: 0.95rem;">Litmus</h4>
-          <span class="webs-badge webs-badge-primary">Literary &amp; Debate</span>
-          <a href="./assets/logos/clubs/litmus.jpg" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
-        </div>
-
-        <!-- 8. Chitrank -->
-        <div class="logo-card">
-          <img src="./assets/logos/clubs/chitrank.png" width="80" height="80" alt="Chitrank" style="object-fit: contain;" />
-          <h4 style="margin: 0; font-size: 0.95rem;">Chitrank</h4>
-          <span class="webs-badge webs-badge-accent">Fine Arts &amp; Painting</span>
-          <a href="./assets/logos/clubs/chitrank.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
-        </div>
-
-        <!-- 9. Shutterbug (Official Latest Logo) -->
-        <div class="logo-card">
-          <img src="./assets/logos/clubs/shutterbug.webp" width="80" height="80" alt="Shutterbug (Latest Official Logo)" style="object-fit: contain;" />
-          <h4 style="margin: 0; font-size: 0.95rem;">Shutterbug</h4>
-          <span class="webs-badge webs-badge-success">Photography &amp; Film</span>
-          <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-top: 4px;">
-            <a href="./assets/logos/clubs/shutterbug.webp" download="shutterbug.webp" class="webs-btn webs-btn-accent" style="padding: 3px 8px; font-size: 0.72rem;">WebP</a>
-            <a href="./assets/logos/clubs/shutterbug.png" download="shutterbug.png" class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">PNG</a>
-          </div>
-        </div>
-
-        <!-- 10. Riyaz -->
-        <div class="logo-card">
-          <img src="./assets/logos/clubs/riyaz.png" width="80" height="80" alt="Riyaz" style="object-fit: contain;" />
-          <h4 style="margin: 0; font-size: 0.95rem;">Riyaz</h4>
-          <span class="webs-badge webs-badge-danger">Music &amp; Vocals</span>
-          <a href="./assets/logos/clubs/riyaz.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
-        </div>
-
-        <!-- 11. Elysium -->
-        <div class="logo-card">
-          <img src="./assets/logos/clubs/elysium.png" width="80" height="80" alt="Elysium" style="object-fit: contain;" />
-          <h4 style="margin: 0; font-size: 0.95rem;">Elysium</h4>
-          <span class="webs-badge webs-badge-primary">Dance Society</span>
-          <a href="./assets/logos/clubs/elysium.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
-        </div>
-
-        <!-- 12. Infinitio -->
-        <div class="logo-card">
-          <img src="./assets/logos/clubs/infinitio.jpeg" width="80" height="80" alt="Infinitio" style="object-fit: contain; border-radius: 8px;" />
-          <h4 style="margin: 0; font-size: 0.95rem;">Infinitio</h4>
-          <span class="webs-badge webs-badge-accent">Astronomy &amp; Science</span>
-          <a href="./assets/logos/clubs/infinitio.jpeg" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
-        </div>
-
-        <!-- 13. Nova -->
-        <div class="logo-card">
-          <img src="./assets/logos/clubs/nova.jpg" width="80" height="80" alt="Nova" style="object-fit: contain; border-radius: 8px;" />
-          <h4 style="margin: 0; font-size: 0.95rem;">Nova</h4>
-          <span class="webs-badge webs-badge-danger">Fashion &amp; Lifestyle</span>
-          <a href="./assets/logos/clubs/nova.jpg" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
-        </div>
-
-        <!-- 14. SAC -->
-        <div class="logo-card">
-          <img src="./assets/logos/clubs/sac.png" width="80" height="80" alt="SAC" style="object-fit: contain;" />
-          <h4 style="margin: 0; font-size: 0.95rem;">SAC</h4>
-          <span class="webs-badge webs-badge-primary">Students' Affairs</span>
-          <a href="./assets/logos/clubs/sac.png" download class="webs-btn webs-btn-outline" style="padding: 3px 8px; font-size: 0.72rem;">Download</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Components Demo -->
-  <section id="components" class="demo-section">
-    <div class="webs-container">
-      <h2 class="webs-title">4. Web Components Tags</h2>
-      <p style="color: var(--webs-text-muted);">Pre-registered custom HTML elements powered by <code>webs.js</code>:</p>
-
-      <div class="demo-code">
-&lt;!-- Reusable Vector / Image Logo Component --&gt;
-&lt;webs-logo variant="kgec" size="64"&gt;&lt;/webs-logo&gt;
-&lt;webs-logo variant="ashoka" size="64"&gt;&lt;/webs-logo&gt;
-&lt;webs-logo variant="club" name="keygencoders" size="64"&gt;&lt;/webs-logo&gt;
-&lt;webs-logo variant="club" name="robotics-society" size="64"&gt;&lt;/webs-logo&gt;
-
-&lt;!-- IIT Guwahati MegaMenu Navbar --&gt;
-&lt;webs-navbar active="departments" main-domain="https://website.kgec.edu.in"&gt;&lt;/webs-navbar&gt;
-
-&lt;!-- Standard Institutional Footer --&gt;
-&lt;webs-footer main-domain="https://website.kgec.edu.in"&gt;&lt;/webs-footer&gt;
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer Component -->
+  <!-- Footer -->
   <footer class="webs-footer">
     <div class="webs-container">
       <div class="webs-footer-bottom">
@@ -454,14 +480,30 @@
           &copy; 2026 Kalyani Government Engineering College. All rights reserved.
         </div>
         <div style="color: #CBD5E1;">
-          Website maintained by Department of Computer Science &amp; Engineering
+          webs Design System maintained by Department of Computer Science &amp; Engineering
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Runtime Theme Switcher Script -->
+  <!-- Scripts -->
+  <script src="./dist/components/webs-icon.js"></script>
   <script>
+    // 1. Toast Notification Helper
+    function showToast(text) {
+      const toast = document.getElementById('toast');
+      toast.textContent = text;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    function copySnippet(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(`Copied: "${text}"`);
+      });
+    }
+
+    // 2. Theme Selector
     document.getElementById('themeSelector').addEventListener('change', function(e) {
       document.documentElement.setAttribute('data-theme', e.target.value);
       localStorage.setItem('webs_theme', e.target.value);
@@ -471,6 +513,132 @@
       document.documentElement.setAttribute('data-theme', savedTheme);
       document.getElementById('themeSelector').value = savedTheme;
     }
+
+    // 3. Live Type Tester
+    const testerInput = document.getElementById('testerInput');
+    const testerFont = document.getElementById('testerFont');
+    const testerSize = document.getElementById('testerSize');
+    const sizeVal = document.getElementById('sizeVal');
+    const testerPreview = document.getElementById('testerPreview');
+
+    function updateTypeTester() {
+      testerPreview.textContent = testerInput.value || 'KGEC';
+      testerPreview.style.fontFamily = testerFont.value;
+      testerPreview.style.fontSize = testerSize.value + 'px';
+      sizeVal.textContent = testerSize.value + 'px';
+    }
+    testerInput.addEventListener('input', updateTypeTester);
+    testerFont.addEventListener('change', updateTypeTester);
+    testerSize.addEventListener('input', updateTypeTester);
+
+    // 4. Iconography Grid Builder & Filtering
+    const ICONS_DATA = [
+      { name: 'arrow-left', cat: 'navigation' },
+      { name: 'arrow-right', cat: 'navigation' },
+      { name: 'arrow-up', cat: 'navigation' },
+      { name: 'arrow-down', cat: 'navigation' },
+      { name: 'chevron-left', cat: 'navigation' },
+      { name: 'chevron-right', cat: 'navigation' },
+      { name: 'chevron-down', cat: 'navigation' },
+      { name: 'chevron-up', cat: 'navigation' },
+      { name: 'menu', cat: 'navigation' },
+      { name: 'close', cat: 'navigation' },
+      { name: 'search', cat: 'ui' },
+      { name: 'external-link', cat: 'navigation' },
+      { name: 'download', cat: 'ui' },
+      { name: 'upload', cat: 'ui' },
+      { name: 'copy', cat: 'ui' },
+      { name: 'check', cat: 'ui' },
+      { name: 'check-circle', cat: 'ui' },
+      { name: 'plus', cat: 'ui' },
+      { name: 'minus', cat: 'ui' },
+      { name: 'filter', cat: 'ui' },
+      { name: 'refresh', cat: 'ui' },
+      { name: 'academic-cap', cat: 'academic' },
+      { name: 'book', cat: 'academic' },
+      { name: 'building', cat: 'academic' },
+      { name: 'beaker', cat: 'academic' },
+      { name: 'microscope', cat: 'academic' },
+      { name: 'atom', cat: 'academic' },
+      { name: 'cpu', cat: 'academic' },
+      { name: 'briefcase', cat: 'academic' },
+      { name: 'award', cat: 'academic' },
+      { name: 'calendar', cat: 'academic' },
+      { name: 'newspaper', cat: 'academic' },
+      { name: 'file-text', cat: 'academic' },
+      { name: 'mail', cat: 'communication' },
+      { name: 'phone', cat: 'communication' },
+      { name: 'map-pin', cat: 'communication' },
+      { name: 'globe', cat: 'communication' },
+      { name: 'bell', cat: 'communication' },
+      { name: 'rss', cat: 'communication' },
+      { name: 'github', cat: 'communication' },
+      { name: 'linkedin', cat: 'communication' },
+      { name: 'youtube', cat: 'communication' },
+      { name: 'user', cat: 'security' },
+      { name: 'users', cat: 'security' },
+      { name: 'shield-check', cat: 'security' },
+      { name: 'lock', cat: 'security' },
+      { name: 'key', cat: 'security' },
+      { name: 'info', cat: 'security' },
+      { name: 'alert-triangle', cat: 'security' },
+      { name: 'palette', cat: 'media' },
+      { name: 'sun', cat: 'media' },
+      { name: 'moon', cat: 'media' },
+      { name: 'layers', cat: 'media' },
+      { name: 'terminal', cat: 'media' },
+      { name: 'star', cat: 'media' },
+      { name: 'sparkles', cat: 'media' }
+    ];
+
+    document.getElementById('iconCount').textContent = ICONS_DATA.length;
+
+    const iconsGrid = document.getElementById('iconsGrid');
+    const iconSearch = document.getElementById('iconSearch');
+    const iconSizeSelect = document.getElementById('iconSizeSelect');
+    let currentCategory = 'all';
+
+    function renderIcons() {
+      const search = iconSearch.value.toLowerCase().trim();
+      const size = iconSizeSelect.value;
+      iconsGrid.innerHTML = '';
+
+      const filtered = ICONS_DATA.filter(icon => {
+        const matchesCat = currentCategory === 'all' || icon.cat === currentCategory;
+        const matchesSearch = !search || icon.name.includes(search) || icon.cat.includes(search);
+        return matchesCat && matchesSearch;
+      });
+
+      filtered.forEach(icon => {
+        const card = document.createElement('div');
+        card.className = 'icon-card';
+        card.innerHTML = `
+          <webs-icon name="${icon.name}" size="${size}"></webs-icon>
+          <span class="icon-name">${icon.name}</span>
+        `;
+        card.onclick = () => {
+          const snippet = `<webs-icon name="${icon.name}" size="${size}"></webs-icon>`;
+          copySnippet(snippet);
+        };
+        iconsGrid.appendChild(card);
+      });
+    }
+
+    renderIcons();
+
+    iconSearch.addEventListener('input', renderIcons);
+    iconSizeSelect.addEventListener('change', renderIcons);
+
+    document.querySelectorAll('#categoryPills button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#categoryPills button').forEach(b => {
+          b.className = 'webs-btn webs-btn-outline webs-btn-sm';
+        });
+        btn.className = 'webs-btn webs-btn-primary webs-btn-sm';
+        currentCategory = btn.getAttribute('data-cat');
+        renderIcons();
+      });
+    });
   </script>
 </body>
 </html>

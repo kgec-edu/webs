@@ -1,0 +1,83 @@
+/**
+ * <webs-logo> Web Component
+ * Standard reusable vector & high-res logo component for KGEC Institutional, National Emblem of India, and Student Clubs.
+ *
+ * Usage:
+ * <webs-logo variant="kgec" size="64"></webs-logo>
+ * <webs-logo variant="indian-emblem" size="64"></webs-logo>
+ * <webs-logo variant="club" name="keygencoders" size="64"></webs-logo>
+ * <webs-logo variant="club" name="robotics-society" size="64"></webs-logo>
+ */
+class WebsLogo extends HTMLElement {
+  static get observedAttributes() {
+    return ['variant', 'name', 'size', 'theme', 'class'];
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+
+  attributeChangedCallback() {
+    this.render();
+  }
+
+  render() {
+    const variant = this.getAttribute('variant') || 'kgec';
+    const name = this.getAttribute('name') || '';
+    const size = parseInt(this.getAttribute('size') || '64', 10);
+    const basePath = this.getAttribute('base-path') || '/assets/logos';
+
+    let src = '';
+    let alt = '';
+
+    if (variant === 'kgec') {
+      src = `${basePath}/institutional/kgec-logo.svg`;
+      alt = 'Kalyani Government Engineering College Official Emblem';
+    } else if (variant === 'indian-emblem' || variant === 'national-emblem' || variant === 'ashoka') {
+      src = `${basePath}/institutional/indian-emblem.webp`;
+      alt = 'National Emblem of India (Lion Capital of Ashoka)';
+    } else if (variant === 'club') {
+      const clubMap = {
+        'keygencoders': 'keygencoders.webp',
+        'gdsc': 'gdsc-kgec.webp',
+        'gdsc-kgec': 'gdsc-kgec.webp',
+        'robotics': 'robotics-society.webp',
+        'robotics-society': 'robotics-society.webp',
+        'robochief': 'robotics-society.webp',
+        'ecell': 'ecell.webp',
+        'sportix': 'sportix.webp',
+        'sports': 'sportix.webp',
+        'les-quizerables': 'les-quizerables.webp',
+        'litmus': 'litmus.webp',
+        'chitrank': 'chitrank.webp',
+        'shutterbug': 'shutterbug.webp',
+        'sb': 'shutterbug.webp',
+        'riyaz': 'riyaz.webp',
+        'elysium': 'elysium.webp',
+        'infinitio': 'infinitio.webp',
+        'nova': 'nova.webp',
+        'sac': 'sac.webp',
+        'binary': 'binary-hackathon.svg',
+        'binary-hackathon': 'binary-hackathon.svg',
+      };
+      const fileName = clubMap[name.toLowerCase()] || `${name}.webp`;
+      src = `${basePath}/clubs/${fileName}`;
+      alt = `${name} Club Logo`;
+    }
+
+    this.innerHTML = `
+      <img
+        src="${src}"
+        alt="${alt}"
+        width="${size}"
+        height="${size}"
+        style="width: ${size}px; height: ${size}px; object-fit: contain; display: inline-block; vertical-align: middle; border-radius: 4px;"
+        onerror="this.onerror=null; this.src='${basePath}/institutional/kgec-logo.png';"
+      />
+    `;
+  }
+}
+
+if (!customElements.get('webs-logo')) {
+  customElements.define('webs-logo', WebsLogo);
+}

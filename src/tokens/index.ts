@@ -131,3 +131,7 @@ export const WEBS_THEMES: Record<ThemeName, ThemePreset> = {
     },
   },
 };
+
+export * from './typography';
+export * from './icons';
+

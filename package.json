@@ -12,7 +12,7 @@
     "src"
   ],
   "scripts": {
-    "build": "mkdir -p dist && cp src/css/webs.css dist/webs.min.css && cp src/webs.js dist/webs.js && cp -r assets/* dist/assets/",
+    "build": "mkdir -p dist/components dist/tokens && cp src/css/webs.css dist/webs.min.css && cp src/webs.js dist/webs.js && cp src/components/* dist/components/ && cp -r assets dist/ && echo 'Build complete'",
     "test": "echo 'webs design system tests passed' && exit 0"
   },
   "repository": {
@@ -23,7 +23,9 @@
     "kgec",
     "design-system",
     "webs",
-    "iitg-navbar",
+    "typography",
+    "icons",
+    "kgec-navbar",
     "mega-menu",
     "academic-portal",
     "github-pages"

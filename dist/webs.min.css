@@ -1,11 +1,12 @@
 /*!
- * webs Design System v1.0.0
- * Unified Design System for Kalyani Government Engineering College (KGEC)
+ * webs Design System v1.1.0
+ * Unified Design System & Component CDN for Kalyani Government Engineering College (KGEC)
+ * Complete with High-Performance Theme Presets, Typography Scale, and Vector Iconography
  * Open Source & Hosted on kgec-edu git
  * Compatible with GitHub Pages, HTML, React, Vue, Next.js
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 /* ==========================================================================
    1. CSS Variables & 5 Pluggable Themes
@@ -23,15 +24,18 @@
   --webs-text-main: #1E293B;
   --webs-text-muted: #5E6B7A;
   --webs-border: #DDE3EA;
-  --webs-font-heading: 'Outfit', 'Roboto Slab', Georgia, serif;
+  --webs-font-heading: 'Outfit', 'Roboto Slab', system-ui, -apple-system, sans-serif;
   --webs-font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --webs-font-mono: 'JetBrains Mono', monospace;
+  --webs-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --webs-font-serif: 'Merriweather', Georgia, serif;
+  --webs-font-indic: 'Hind Siliguri', 'Noto Sans Bengali', system-ui, sans-serif;
   --webs-radius-sm: 4px;
   --webs-radius-md: 8px;
   --webs-radius-lg: 12px;
-  --webs-shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-  --webs-shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-  --webs-shadow-lg: 0 18px 40px rgba(0,0,0,0.18);
+  --webs-radius-full: 9999px;
+  --webs-shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --webs-shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --webs-shadow-lg: 0 18px 40px rgba(0,0,0,0.16);
 }
 
 [data-theme="theme-2"] {
@@ -68,7 +72,7 @@
   --webs-primary: #881337;
   --webs-primary-deep: #4C0519;
   --webs-primary-soft: #9F1239;
-  --webs-secondary: #0A3161;
+  --webs-secondary: #212331;
   --webs-accent: #F59E0B;
   --webs-accent-hover: #D97706;
   --webs-accent-light: #FEF3C7;
@@ -95,7 +99,7 @@
 }
 
 /* ==========================================================================
-   2. Base & Typography
+   2. Base Reset & Font Family Defaults
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -109,21 +113,95 @@
   padding: 0;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* ==========================================================================
+   3. Typography Scale & Hierarchy Tokens
+   ========================================================================== */
+/* Font Family Utilities */
+.webs-font-sans    { font-family: var(--webs-font-body); }
+.webs-font-heading { font-family: var(--webs-font-heading); }
+.webs-font-mono    { font-family: var(--webs-font-mono); }
+.webs-font-serif   { font-family: var(--webs-font-serif); }
+.webs-font-indic   { font-family: var(--webs-font-indic); }
+
+/* Font Weights */
+.webs-font-regular, .webs-font-normal { font-weight: 400; }
+.webs-font-medium    { font-weight: 500; }
+.webs-font-semibold  { font-weight: 600; }
+.webs-font-bold      { font-weight: 700; }
+.webs-font-extrabold { font-weight: 800; }
+
+/* Line Heights */
+.webs-leading-none    { line-height: 1; }
+.webs-leading-tight   { line-height: 1.25; }
+.webs-leading-snug    { line-height: 1.375; }
+.webs-leading-normal  { line-height: 1.5; }
+.webs-leading-relaxed { line-height: 1.625; }
+.webs-leading-loose   { line-height: 2; }
+
+/* Tracking (Letter Spacing) */
+.webs-tracking-tighter { letter-spacing: -0.05em; }
+.webs-tracking-tight   { letter-spacing: -0.025em; }
+.webs-tracking-normal  { letter-spacing: 0em; }
+.webs-tracking-wide    { letter-spacing: 0.025em; }
+.webs-tracking-wider   { letter-spacing: 0.05em; }
+.webs-tracking-widest  { letter-spacing: 0.1em; }
+
+/* Type Scale Utilities */
+.webs-text-xs   { font-size: 0.75rem;   line-height: 1.4; }    /* 12px */
+.webs-text-sm   { font-size: 0.875rem;  line-height: 1.5; }    /* 14px */
+.webs-text-base { font-size: 1rem;      line-height: 1.6; }    /* 16px */
+.webs-text-lg   { font-size: 1.125rem;  line-height: 1.5; }    /* 18px */
+.webs-text-xl   { font-size: 1.25rem;   line-height: 1.4; }    /* 20px */
+.webs-text-2xl  { font-size: 1.5rem;    line-height: 1.35; }   /* 24px */
+.webs-text-3xl  { font-size: 1.875rem;  line-height: 1.3; }    /* 30px */
+.webs-text-4xl  { font-size: 2.25rem;   line-height: 1.25; }   /* 36px */
+.webs-text-5xl  { font-size: 3rem;      line-height: 1.15; }   /* 48px */
+.webs-text-6xl  { font-size: 3.75rem;   line-height: 1.1; }    /* 60px */
+
+/* Headings */
 .webs-h1, .webs-h2, .webs-h3, .webs-h4, .webs-h5, .webs-h6,
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--webs-font-heading);
   color: var(--webs-primary-deep);
   font-weight: 700;
   margin-top: 0;
+  margin-bottom: 0.5rem;
 }
 
+.webs-display, .webs-hero-title {
+  font-family: var(--webs-font-heading);
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--webs-primary-deep);
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .webs-display, .webs-hero-title {
+    font-size: 3.75rem;
+  }
+}
+
+.webs-h1, h1 { font-size: 2.25rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.02em; }
+.webs-h2, h2 { font-size: 1.875rem; font-weight: 700; line-height: 1.3;  letter-spacing: -0.015em; }
+.webs-h3, h3 { font-size: 1.5rem;   font-weight: 700; line-height: 1.35; letter-spacing: -0.01em; }
+.webs-h4, h4 { font-size: 1.25rem;  font-weight: 600; line-height: 1.4; }
+.webs-h5, h5 { font-size: 1rem;     font-weight: 600; line-height: 1.5; }
+.webs-h6, h6 { font-size: 0.875rem; font-weight: 600; line-height: 1.5; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* Section Title with Underline Accent */
 .webs-title {
   position: relative;
+  font-family: var(--webs-font-heading);
   font-size: 1.75rem;
   font-weight: 800;
-  margin-bottom: 1.5rem;
+  color: var(--webs-primary-deep);
+  margin-bottom: 1.25rem;
   padding-bottom: 0.5rem;
 }
 
@@ -132,7 +210,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 60px;
+  width: 50px;
   height: 3px;
   background-color: var(--webs-accent);
   border-radius: 2px;
@@ -147,8 +225,135 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(-50%);
 }
 
+/* Eyebrow / Category Tag */
+.webs-eyebrow {
+  display: inline-block;
+  font-family: var(--webs-font-body);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--webs-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+/* Lead / Subtitle Paragraph */
+.webs-lead {
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--webs-text-muted);
+  margin-bottom: 1rem;
+}
+
+/* Caption / Microcopy */
+.webs-caption {
+  font-size: 0.75rem;
+  color: var(--webs-text-muted);
+  line-height: 1.4;
+}
+
+/* Blockquote */
+.webs-blockquote {
+  border-left: 4px solid var(--webs-accent);
+  padding: 12px 20px;
+  margin: 1.5rem 0;
+  background-color: rgba(0, 0, 0, 0.02);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--webs-text-main);
+  border-radius: 0 var(--webs-radius-md) var(--webs-radius-md) 0;
+}
+
+/* Code & Keyboard */
+.webs-code, code {
+  font-family: var(--webs-font-mono);
+  font-size: 0.86em;
+  background-color: rgba(0, 0, 0, 0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--webs-primary);
+}
+
+.webs-kbd {
+  font-family: var(--webs-font-mono);
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-bottom: 2px solid #94A3B8;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Rich Prose Container for Articles */
+.webs-prose {
+  max-width: 68ch;
+  color: var(--webs-text-main);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.webs-prose p {
+  margin-bottom: 1.25rem;
+}
+
+.webs-prose h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.webs-prose h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
 /* ==========================================================================
-   3. Layout Grid & Containers
+   4. Iconography System
+   ========================================================================== */
+.webs-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+/* Icon Sizing Tokens */
+.webs-icon-xs  { width: 14px; height: 14px; }
+.webs-icon-sm  { width: 18px; height: 18px; }
+.webs-icon-md  { width: 22px; height: 22px; }
+.webs-icon-lg  { width: 28px; height: 28px; }
+.webs-icon-xl  { width: 36px; height: 36px; }
+.webs-icon-2xl { width: 48px; height: 48px; }
+
+/* Icon Color Modifiers */
+.webs-icon-primary   { color: var(--webs-primary); }
+.webs-icon-accent    { color: var(--webs-accent); }
+.webs-icon-secondary { color: var(--webs-secondary); }
+.webs-icon-muted     { color: var(--webs-text-muted); }
+.webs-icon-success   { color: #059669; }
+.webs-icon-warning   { color: #D97706; }
+.webs-icon-danger    { color: #DC2626; }
+
+/* Spin Animation */
+@keyframes webs-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.webs-icon-spin {
+  animation: webs-spin 1s linear infinite;
+}
+
+/* ==========================================================================
+   5. Layout Grid & Containers
    ========================================================================== */
 .webs-container {
   width: 100%;
@@ -161,7 +366,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .webs-grid {
   display: grid;
-  gap: 24px;
+  gap: 20px;
 }
 
 .webs-grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
@@ -169,7 +374,7 @@ h1, h2, h3, h4, h5, h6 {
 .webs-grid-4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 
 /* ==========================================================================
-   4. Buttons
+   6. Buttons
    ========================================================================== */
 .webs-btn {
   display: inline-flex;
@@ -177,187 +382,174 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   gap: 8px;
   padding: 8px 16px;
+  font-family: var(--webs-font-body);
   font-size: 0.88rem;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: var(--webs-radius-sm);
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.15s ease-in-out;
   border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  line-height: 1.2;
+}
+
+.webs-btn:focus-visible {
+  outline: 2px solid var(--webs-accent);
+  outline-offset: 2px;
 }
 
 .webs-btn-primary {
   background-color: var(--webs-primary);
   color: #FFFFFF;
-  border-color: var(--webs-primary);
 }
 
 .webs-btn-primary:hover {
   background-color: var(--webs-primary-deep);
   transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(10, 49, 97, 0.25);
-  color: #FFFFFF;
+  box-shadow: var(--webs-shadow-sm);
 }
 
 .webs-btn-accent {
   background-color: var(--webs-accent);
-  color: #062244;
-  border-color: var(--webs-accent);
-  font-weight: 800;
+  color: #181924;
 }
 
 .webs-btn-accent:hover {
   background-color: var(--webs-accent-hover);
-  color: #FFFFFF;
   transform: translateY(-1px);
+  box-shadow: var(--webs-shadow-sm);
 }
 
 .webs-btn-outline {
   background-color: transparent;
-  color: var(--webs-primary);
-  border-color: var(--webs-primary);
+  border-color: var(--webs-border);
+  color: var(--webs-text-main);
 }
 
 .webs-btn-outline:hover {
-  background-color: var(--webs-primary);
-  color: #FFFFFF;
+  background-color: var(--webs-bg);
+  border-color: var(--webs-text-muted);
+}
+
+.webs-btn-sm {
+  padding: 4px 10px;
+  font-size: 0.78rem;
+}
+
+.webs-btn-lg {
+  padding: 12px 24px;
+  font-size: 1rem;
 }
 
 /* ==========================================================================
-   5. Cards & Panels
+   7. Cards & Surfaces
    ========================================================================== */
 .webs-card {
   background-color: var(--webs-surface);
   border: 1px solid var(--webs-border);
   border-radius: var(--webs-radius-md);
-  padding: 24px;
+  padding: 20px;
   box-shadow: var(--webs-shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .webs-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--webs-shadow-md);
+  border-color: var(--webs-accent);
 }
 
-.webs-card-bordered {
-  border-top: 3px solid var(--webs-primary);
-}
-
-.webs-card-accent {
+.webs-card-featured {
   border-top: 3px solid var(--webs-accent);
 }
 
 /* ==========================================================================
-   6. Badges & Tags
+   8. Badges & Pills
    ========================================================================== */
 .webs-badge {
   display: inline-flex;
   align-items: center;
-  padding: 2px 8px;
+  gap: 4px;
+  padding: 3px 8px;
   font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-weight: 800;
   border-radius: var(--webs-radius-sm);
+  text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
-.webs-badge-primary { background-color: var(--webs-primary); color: #FFFFFF; }
-.webs-badge-accent { background-color: var(--webs-accent-light); color: #B45309; }
-.webs-badge-success { background-color: #DCFCE7; color: #15803D; }
-.webs-badge-danger { background-color: #FEE2E2; color: #B91C1C; }
+.webs-badge-primary   { background-color: rgba(33, 35, 49, 0.1); color: var(--webs-primary); }
+.webs-badge-accent    { background-color: var(--webs-accent-light); color: var(--webs-accent-hover); }
+.webs-badge-secondary { background-color: rgba(136, 19, 55, 0.1); color: var(--webs-secondary); }
+.webs-badge-success   { background-color: #D1FAE5; color: #065F46; }
+.webs-badge-warning   { background-color: #FEF3C7; color: #92400E; }
+.webs-badge-danger    { background-color: #FEE2E2; color: #991B1B; }
 
 /* ==========================================================================
-   7. Top Utility Bar
+   9. Tables
    ========================================================================== */
-.webs-topbar {
-  background-color: var(--webs-primary-deep);
-  color: #E2E8F0;
-  font-size: 0.78rem;
-  padding: 6px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.webs-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--webs-border);
+  border-radius: var(--webs-radius-md);
+  background-color: var(--webs-surface);
 }
 
-.webs-topbar-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
+.webs-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.85rem;
 }
 
-.webs-topbar-link {
-  color: #CBD5E1;
-  text-decoration: none;
-  transition: color 0.15s ease;
-}
-
-.webs-topbar-link:hover {
-  color: var(--webs-accent);
-}
-
-/* ==========================================================================
-   8. Institutional Header & Logo
-   ========================================================================== */
-.webs-header {
-  background-color: #FFFFFF;
+.webs-table th {
+  background-color: var(--webs-bg);
+  color: var(--webs-primary-deep);
+  font-weight: 700;
+  padding: 10px 14px;
   border-bottom: 1px solid var(--webs-border);
-  padding: 12px 0;
 }
 
-.webs-header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
+.webs-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--webs-border);
 }
 
-.webs-brand {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  text-decoration: none;
-  color: inherit;
+.webs-table tr:last-child td {
+  border-bottom: none;
 }
 
-.webs-logo-img {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-}
-
-.webs-ashoka-img {
-  width: 48px;
-  height: 64px;
-  object-fit: contain;
+.webs-table tr:hover td {
+  background-color: rgba(0, 0, 0, 0.015);
 }
 
 /* ==========================================================================
-   9. KGEC Institutional Mega Menu Navigation
+   10. Institutional Navbar & MegaMenu
    ========================================================================== */
-.webs-nav {
+.webs-navbar {
   background-color: var(--webs-primary);
-  border-bottom: 3px solid var(--webs-accent);
-  box-shadow: var(--webs-shadow-md);
-  position: sticky;
-  top: 0;
-  z-index: 999;
+  color: #FFFFFF;
+  border-bottom: 2px solid var(--webs-accent);
 }
 
-.webs-nav-inner {
+.webs-nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  height: 64px;
+}
+
+.webs-nav-links {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  white-space: nowrap;
-}
-
-.webs-nav-list {
-  display: flex;
+  gap: 4px;
   list-style: none;
   margin: 0;
   padding: 0;
-  align-items: center;
 }
 
 .webs-nav-item {
@@ -365,89 +557,45 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .webs-nav-link {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 8px 12px;
+  border-radius: var(--webs-radius-sm);
   display: flex;
   align-items: center;
   gap: 4px;
-  padding: 11px 12px;
-  color: #FFFFFF;
-  text-decoration: none;
-  font-size: 0.84rem;
-  font-weight: 600;
-  transition: background-color 0.15s ease;
+  transition: all 0.15s ease;
 }
 
-.webs-nav-link:hover, .webs-nav-item:hover > .webs-nav-link {
+.webs-nav-link:hover {
   background-color: var(--webs-primary-deep);
-  color: #FFFFFF;
-}
-
-.webs-megamenu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #FFFFFF;
-  border-top: 3px solid var(--webs-accent);
-  box-shadow: var(--webs-shadow-lg);
-  border-radius: 0 0 var(--webs-radius-md) var(--webs-radius-md);
-  padding: 20px;
-  z-index: 1000;
-  width: 500px;
-}
-
-.webs-nav-item:hover > .webs-megamenu {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.webs-megamenu-title {
-  font-size: 0.74rem;
-  font-weight: 800;
-  color: var(--webs-primary);
-  text-transform: uppercase;
-  border-bottom: 1px solid var(--webs-border);
-  padding-bottom: 4px;
-  margin-bottom: 8px;
-}
-
-.webs-megamenu-link {
-  display: block;
-  padding: 4px 0;
-  color: var(--webs-text-main);
-  text-decoration: none;
-  font-size: 0.82rem;
-  font-weight: 500;
-  transition: color 0.15s ease;
-}
-
-.webs-megamenu-link:hover {
-  color: var(--webs-accent-hover);
-  text-decoration: underline;
+  color: var(--webs-accent);
 }
 
 /* ==========================================================================
-   10. Institutional Footer
+   11. Institutional Footer
    ========================================================================== */
 .webs-footer {
   background-color: var(--webs-primary-deep);
   color: #E2E8F0;
   border-top: 4px solid var(--webs-accent);
-  padding-top: 50px;
+  padding-top: 40px;
   padding-bottom: 20px;
 }
 
 .webs-footer-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 36px;
-  margin-bottom: 40px;
+  gap: 32px;
+  margin-bottom: 32px;
 }
 
 .webs-footer-col h4, .webs-footer-col h3 {
   color: #FFFFFF;
   font-size: 1rem;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   position: relative;
   padding-bottom: 6px;
 }
@@ -469,7 +617,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
 }
 
 .webs-footer-links a {
@@ -484,7 +632,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .webs-footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 20px;
+  padding-top: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;

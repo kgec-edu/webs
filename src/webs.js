@@ -5,6 +5,8 @@
 import './components/webs-logo.js';
 import './components/webs-navbar.js';
 import './components/webs-footer.js';
+import './components/webs-icon.js';
+
 
 export function setWebsTheme(themeName) {
   const validThemes = ['theme-1', 'theme-2', 'theme-3', 'theme-4', 'theme-5'];
