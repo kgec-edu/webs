@@ -120,19 +120,42 @@ Webs.setTheme('theme-1');
 
 ---
 
-## 🖼️ 4. Asset Vault Hotlinks
+## 🖼️ 4. Asset Vault Hotlinks (14 Official Societies & Emblems)
 
-Hotlink vector and transparent WebP logos without hosting overhead:
+Hotlink vector SVG, transparent WebP, and PNG logos directly via jsDelivr CDN:
 
+### Institutional Emblems
 ```html
-<!-- KGEC Official Emblem -->
+<!-- KGEC Official Emblem (SVG) -->
 <img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/institutional/kgec-logo.svg" width="64" alt="KGEC Emblem" />
 
 <!-- National Emblem of India (WebP) -->
 <img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/institutional/national-emblem.webp" width="48" alt="National Emblem of India" />
+```
 
-<!-- Shutterbug Photography Club (WebP) -->
-<img src="https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/shutterbug.webp" width="64" alt="Shutterbug KGEC" />
+### All 14 Student Clubs & Societies Directory
+| # | Club / Society | Domain / Purpose | Hotlink CDN (WebP) |
+|---|---|---|---|
+| 1 | **Shutterbug** | Photography & Films | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/shutterbug.webp` |
+| 2 | **Keygencoders** | Coding & Open Source | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/keygencoders.webp` |
+| 3 | **Robotics Society** | Hardware & AI | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/robotics-society.webp` |
+| 4 | **E-Cell (EDC)** | Entrepreneurship | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/ecell.webp` |
+| 5 | **GDSC KGEC** | Developer Community | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/gdsc-kgec.webp` |
+| 6 | **Chitrank** | Fine Arts & Painting | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/chitrank.webp` |
+| 7 | **Litmus** | Literature & Debate | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/litmus.webp` |
+| 8 | **Les Quizerables** | Quizzing Society | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/les-quizerables.webp` |
+| 9 | **Riyaz** | Music & Vocals | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/riyaz.webp` |
+| 10 | **Elysium** | Dance Society | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/elysium.webp` |
+| 11 | **Infinitio** | Astronomy & Science | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/infinitio.webp` |
+| 12 | **Nova** | Fashion & Lifestyle | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/nova.webp` |
+| 13 | **Sportix** | Sports & Athletics | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/sportix.webp` |
+| 14 | **SAC** | Students' Affairs Council | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/sac.webp` |
+
+### Web Component Usage
+```html
+<webs-logo variant="club" name="shutterbug" size="64"></webs-logo>
+<webs-logo variant="club" name="keygencoders" size="64"></webs-logo>
+<webs-logo variant="club" name="robotics-society" size="64"></webs-logo>
 ```
 
 ---
@@ -141,3 +164,4 @@ Hotlink vector and transparent WebP logos without hosting overhead:
 
 Maintained with ❤️ by the **Department of Computer Science & Engineering**, Kalyani Government Engineering College.  
 Licensed under the **MIT License**.
+
