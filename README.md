@@ -149,7 +149,7 @@ Hotlink vector SVG, transparent WebP, and PNG logos directly via jsDelivr CDN:
 | 11 | **Infinitio** | Astronomy & Science | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/infinitio.webp` |
 | 12 | **Nova** | Fashion & Lifestyle | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/nova.webp` |
 | 13 | **Sportix** | Sports & Athletics | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/sportix.webp` |
-| 14 | **SAC** | Students' Affairs Council | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/sac.webp` |
+| 14 | **SAC** | Students' Automobile Club | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/sac.webp` |
 
 ### Web Component Usage
 ```html
