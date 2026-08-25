@@ -146,8 +146,8 @@ Hotlink vector SVG, transparent WebP, and PNG logos directly via jsDelivr CDN:
 | 8 | **Les Quizerables** | Quizzing Society | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/les-quizerables.webp` |
 | 9 | **Riyaz** | Music & Vocals | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/riyaz.webp` |
 | 10 | **Elysium** | Dance Society | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/elysium.webp` |
-| 11 | **Infinitio** | Astronomy & Science | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/infinitio.webp` |
-| 12 | **Nova** | Fashion & Lifestyle | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/nova.webp` |
+| 11 | **Infinitio** | Mathematics | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/infinitio.webp` |
+| 12 | **Nova** | Astronomy & Space | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/nova.webp` |
 | 13 | **Sportix** | Sports & Athletics | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/sportix.webp` |
 | 14 | **SAC** | Students' Automobile Club | `https://cdn.jsdelivr.net/gh/kgec-edu/webs@main/assets/logos/clubs/sac.webp` |
 
